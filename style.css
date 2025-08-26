@@ -21,7 +21,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 .global-nav .nav-item.active{background:rgba(255,255,255,0.12)}
 .menu-toggle{display:none !important;background:none;border:0;color:#fff;font-size:20px}
 .hero{padding:48px 0}
-.hero-inner{display:flex;gap:30px;align-items:center;position:relative;z-index:1;}
+.hero-inner{display:flex;gap:30px;align-items:center}
 .hero-content{flex:1}
 .lead{color:var(--muted);font-size:18px}
 .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
@@ -76,49 +76,42 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
     padding: 6px 6px; /* 文字がつぶれないよう余白も少し狭める */
   }
 }
-/* ここから置き換え: ヒーローにPayPay風の背景ウェーブ＋スクショ配置（薄めver） */
+/* ここからヒーロー画像のアスペクト比修正版 */
 .hero--paypayish-bg{
   position: relative;
-  /* overflow: hidden; ← 影や画像がはみ出せるように解除 */
+  overflow: hidden;
   background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0));
 }
 
-/* 右上のウェーブ形状（SVG）は表示するが、主張を抑える */
 .hero--paypayish-bg::before{
   content: "";
   position: absolute;
   top: -120px;
   right: -160px;
-  width: min(1100px, 90vw);    /* 幅を少し広く */
-  height: min(750px, 90vw);    /* 高さを750px（SVGに合わせる） */
+  width: min(1100px, 90vw);
+  height: min(750px, 90vw);
   background: url("assets/hero-bg.svg") right top / cover no-repeat;
   opacity: 1;
   pointer-events: none;
   transform: rotate(0.0001deg);
-  z-index: 0;
 }
 
-/* ========== ヒーロー画像のアスペクト比・影・ブレンド調整 ========== */
-.hero-visual {
+.hero-visual{
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 200px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  pointer-events: none; /* 画像上クリック不可 */
+  position: relative;
+  z-index: 1;
 }
 
-.hero-phone {
-  width: min(95vw, 700px); /* 画面幅に応じて大きく */
+.hero-phone{
+  width: clamp(180px, 24vw, 320px); /* 変更前のまま */
   aspect-ratio: 19.5 / 9;
   height: auto;
-  max-height: 75vh;
-  border-radius: 32px;
+  max-height: 52vh;
+  border-radius: 28px;
   background: linear-gradient(180deg,rgba(255,255,255,0.94) 70%,rgba(255,255,255,0.7) 100%);
   box-shadow:
     0 10px 32px rgba(49,103,69,0.13),
@@ -127,37 +120,27 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
   border: 1px solid rgba(49,103,69,0.07);
   object-fit: cover;
   object-position: center;
-  margin-bottom: -7vw; /* 下方向にはみ出す：調整可 */
 }
 
-/* モバイルでは絶対配置を解除して下に移動 */
 @media (max-width: 800px){
   .hero{padding: 40px 0}
-  .hero-visual{
-    position: static;
-    transform: none;
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 0;
-    z-index: 2;
-  }
-  .hero-phone {
-    width: 98vw;
-    max-width: 370px;
-    aspect-ratio: 19.5 / 9;
-    margin-bottom: -9vw;
-  }
+  .hero-visual{display:none}
   .hero--paypayish-bg::before{
     right: -220px;
     width: 120vw;
     height: 60vw;
-    opacity: 0.35;           /* モバイル側も薄めに */
+    opacity: 0.35;
   }
 }
 
-/* ========== メンバー紹介ページの上部ヘッダー強調 ========== */
+@media (min-width: 1280px){
+  .hero-phone{
+    width: clamp(180px, 20vw, 300px);
+    max-height: 48vh;
+  }
+}
+
+/* ========== ここから追記: メンバー紹介ページの上部ヘッダー強調 ========== */
 .app-header{
   text-align: center;
   margin: 1.5em 0 4em; /* 下方向の余白を広めにしてメンバー紹介と離す */
