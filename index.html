@@ -32,39 +32,39 @@
           <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
           <p class="lead">
             青学ペイは学内で使える簡単・安全な決済アプリ<br>
-            のプロトタイプです。現在の実装状況やこれから<br>
-            のロードマップをこちらでご紹介しています。</p>
+            のプロトタイプです。
+            <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
 
           <div class="hero-ctas">
             <a class="btn btn-primary" href="usage.html">使い方を見る</a>
             <a class="btn btn-outline" href="#features">特徴を見る</a>
           </div>
         </div>
-
-        <!-- 右側のビジュアル（背景扱い）。上のスクショを assets/qr-hero.png として配置してください -->
-        <div class="hero-visual" aria-hidden="true">
-          <img class="hero-phone" src="assets/qr-hero.png" alt="">
+        <!-- 右側のビジュアル -->
+        <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
+          <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
         </div>
       </div>
     </section>
-<!-- ▼▼▼ ダウンロードバナーをここに挿入 ▼▼▼ -->
-  <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
-    <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
-      <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
-      <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
-        いますぐ<br>
-        <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
+    <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
+    <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
+      <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
+        <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
+        <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
+          いますぐ<br>
+          <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
+        </div>
+      </div>
+      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#316745; font-weight:700; font-size:1.1em; padding:12px 24px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); text-decoration:none;">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:26px; vertical-align:middle; margin-right:8px;">
+        TestFlightで体験
+      </a>
+      <div style="margin-top:10px; font-size:0.98em; color:#888;">
+        ※iOSのみ対応／App Storeには未公開
       </div>
     </div>
-    <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#316745; font-weight:700; font-size:1.1em; padding:12px 24px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); text-decoration:none;">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:26px; vertical-align:middle; margin-right:8px;">
-      TestFlightで体験
-    </a>
-    <div style="margin-top:10px; font-size:0.98em; color:#888;">
-      ※iOSのみ対応／App Storeには未公開
-    </div>
-  </div>
-  <!-- ▲▲▲ ダウンロードバナーここまで ▲▲▲ -->
+    <!-- ▲▲▲ ダウンロードバナーここまで ▲▲▲ -->
+
     <section id="features" class="features container">
       <h2 class="section-title">主な特徴</h2>
       <div class="cards">
@@ -72,19 +72,16 @@
           <h3>簡単な操作</h3>
           <p>QRコード読み取りやワンタップでの支払いに対応。直感的なUIで誰でも使えます。</p>
         </article>
-
         <article class="card">
           <h3>学内向けの設計</h3>
           <p>学生証や購買データと連携し、学内の利用に最適化された機能を提供します。</p>
         </article>
-
         <article class="card">
           <h3>安全性</h3>
           <p>認証・暗号化など基本的なセキュリティ設計を取り入れています（開発中）。</p>
         </article>
       </div>
     </section>
-
     <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
       <p>プロトタイプ段階。UI/UX の整備、決済フローの実装、テストを順次進めています。Issue や PR でご協力いただける方は大歓迎です。</p>
@@ -95,7 +92,6 @@
       </ul>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -108,11 +104,9 @@
       </div>
     </div>
   </footer>
-
   <script>
     // 現在年をフッターに反映
     document.getElementById('year').textContent = new Date().getFullYear();
-
     // モバイルメニュー簡易開閉
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
