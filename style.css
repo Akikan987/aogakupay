@@ -9,9 +9,18 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans JP';background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans JP';
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
 .container{width:min(1100px,92%);margin:0 auto}
-.site-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff}
+.site-header{
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  color:#fff;
+}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .logo{display:flex;align-items:center;color:#fff;text-decoration:none}
 .logo-mark{display:inline-flex;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.12);align-items:center;justify-content:center;font-weight:700;margin-right:10px}
@@ -21,7 +30,11 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 .global-nav .nav-item.active{background:rgba(255,255,255,0.12)}
 .menu-toggle{display:none !important;background:none;border:0;color:#fff;font-size:20px}
 .hero{padding:48px 0}
-.hero-inner{display:flex;gap:30px;align-items:center}
+.hero-inner{
+  display: flex;
+  gap: 30px;
+  align-items: center; /* テキストと画像を上下中央揃え */
+}
 .hero-content{flex:1}
 .lead{color:var(--muted);font-size:18px}
 .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
@@ -94,7 +107,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 .hero-visual{
   flex: 0 0 auto;
   display: flex;
-  align-items: flex-start; /* 画像を上寄せ */
+  align-items: center; /* 画像も上下中央揃え */
   justify-content: center;
   min-width: 200px;
   position: relative;
@@ -103,10 +116,11 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 
 .hero-phone{
   width: clamp(200px, 28vw, 340px);
-  max-height: 75vh;
+  max-height: 48vh; /* リードの上下幅が広がらないよう制限 */
   aspect-ratio: auto;
   border-radius: 28px;
-  background: linear-gradient(180deg,rgba(255,255,255,0.94) 70%,rgba(255,255,255,0.7) 100%);
+  /* ↓グラデーション白背景を消すことで透かしが白にならない */
+  background: none;
   box-shadow:
     0 10px 32px rgba(49,103,69,0.13),
     0 1.5px 6px rgba(49,103,69,0.07);
@@ -115,7 +129,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
   object-fit: contain;
   object-position: top;
   display: block;
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 @media (max-width: 800px){
@@ -132,7 +146,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 @media (min-width: 1280px){
   .hero-phone{
     width: clamp(220px, 22vw, 380px);
-    max-height: 70vh;
+    max-height: 44vh;
   }
 }
 
