@@ -21,7 +21,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 .global-nav .nav-item.active{background:rgba(255,255,255,0.12)}
 .menu-toggle{display:none !important;background:none;border:0;color:#fff;font-size:20px}
 .hero{padding:48px 0}
-.hero-inner{display:flex;gap:30px;align-items:center}
+.hero-inner{display:flex;gap:30px;align-items:center;position:relative;z-index:1;}
 .hero-content{flex:1}
 .lead{color:var(--muted);font-size:18px}
 .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
@@ -79,9 +79,8 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
 /* ここから置き換え: ヒーローにPayPay風の背景ウェーブ＋スクショ配置（薄めver） */
 .hero--paypayish-bg{
   position: relative;
-  overflow: hidden;
-  /* 左側テキストの可読性確保は残しつつ、かなり薄めに */
-background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0));
+  /* overflow: hidden; ← 影や画像がはみ出せるように解除 */
+  background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0));
 }
 
 /* 右上のウェーブ形状（SVG）は表示するが、主張を抑える */
@@ -96,32 +95,60 @@ background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0)
   opacity: 1;
   pointer-events: none;
   transform: rotate(0.0001deg);
+  z-index: 0;
 }
 
-/* 右側スクショを前面に＆やや大きく */
-.hero-visual{
+/* ========== ヒーロー画像のアスペクト比・影・ブレンド調整 ========== */
+.hero-visual {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  position: relative;         /* 前面表示のための積層コンテキスト */
-  z-index: 1;                 /* 背景ウェーブより上に */
-}
-.hero-phone{
-  width: clamp(240px, 36vw, 420px); /* 220→240、32vw→36vw、最大420pxに拡大 */
-  height: auto;
-  border-radius: 28px;
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.18),
-    0 8px 16px rgba(0,0,0,0.10);
-  transform: rotate(-3deg);   /* -6deg → -3deg で見せ面積UP */
+  min-width: 200px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none; /* 画像上クリック不可 */
 }
 
-/* モバイルでは従来どおりビジュアルを隠す（必要ならここを調整） */
+.hero-phone {
+  width: min(95vw, 700px); /* 画面幅に応じて大きく */
+  aspect-ratio: 19.5 / 9;
+  height: auto;
+  max-height: 75vh;
+  border-radius: 32px;
+  background: linear-gradient(180deg,rgba(255,255,255,0.94) 70%,rgba(255,255,255,0.7) 100%);
+  box-shadow:
+    0 10px 32px rgba(49,103,69,0.13),
+    0 1.5px 6px rgba(49,103,69,0.07);
+  mix-blend-mode: lighten;
+  border: 1px solid rgba(49,103,69,0.07);
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: -7vw; /* 下方向にはみ出す：調整可 */
+}
+
+/* モバイルでは絶対配置を解除して下に移動 */
 @media (max-width: 800px){
   .hero{padding: 40px 0}
-  .hero-visual{display:none}
+  .hero-visual{
+    position: static;
+    transform: none;
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    z-index: 2;
+  }
+  .hero-phone {
+    width: 98vw;
+    max-width: 370px;
+    aspect-ratio: 19.5 / 9;
+    margin-bottom: -9vw;
+  }
   .hero--paypayish-bg::before{
     right: -220px;
     width: 120vw;
@@ -129,29 +156,8 @@ background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0)
     opacity: 0.35;           /* モバイル側も薄めに */
   }
 }
-/* --- ヒーロー画像を小さく抑えるオーバーライド（末尾に追記） --- */
 
-/* 画像コンテナも少し細めに */
-.hero-visual{
-  min-width: 200px; /* 260px → 200px に縮小 */
-}
-
-/* スクショ画像の最大サイズを抑制 */
-.hero-phone{
-  width: clamp(180px, 24vw, 320px); /* 以前より全体的に小さめに */
-  max-height: 52vh;                 /* 画面の約半分を上限に（縦に伸びすぎない） */
-  height: auto;                      /* アスペクト比維持 */
-}
-
-/* 画面が非常に広い時の上限をさらに抑える（任意） */
-@media (min-width: 1280px){
-  .hero-phone{
-    width: clamp(180px, 20vw, 300px);
-    max-height: 48vh;
-  }
-}
-
-/* ========== ここから追記: メンバー紹介ページの上部ヘッダー強調 ========== */
+/* ========== メンバー紹介ページの上部ヘッダー強調 ========== */
 .app-header{
   text-align: center;
   margin: 1.5em 0 4em; /* 下方向の余白を広めにしてメンバー紹介と離す */
