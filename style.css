@@ -47,6 +47,28 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI'
   margin-bottom: 2em;
   padding: 0;
 }
+
+/* ▼▼▼ 追加: メンバー画像の大きさを統一 ▼▼▼ */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  /* 画像以外の部分に影響無し */
+}
+.member-photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 1em;
+  background: #f5f5f5;
+  display: block;
+}
+/* ▼▼▼ 追加ここまで ▼▼▼ */
+
 /* メディアクエリ内のナビ・メニューボタン関連は削除 */
 @media(max-width:800px){
   .global-nav .nav-item {
