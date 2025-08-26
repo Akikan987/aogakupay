@@ -90,10 +90,10 @@ background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0)
   position: absolute;
   top: -120px;
   right: -160px;
-  width: min(1100px, 85vw);
-  height: min(520px, 60vw);
+  width: min(1100px, 90vw);    /* 幅を少し広く */
+  height: min(750px, 90vw);    /* 高さを750px（SVGに合わせる） */
   background: url("assets/hero-bg.svg") right top / cover no-repeat;
-  opacity: 1;              
+  opacity: 1;
   pointer-events: none;
   transform: rotate(0.0001deg);
 }
