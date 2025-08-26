@@ -1,123 +1,163 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>アプリ紹介サイト - ホーム</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">
-        <!-- テキストロゴ。画像を使う場合は <img> に差し替えてクださい -->
-        <img class="logo-mark" src="photoes/app_icon.png" alt="青学ペイ ロゴ">
-        <span class="logo-text">青学ペイ</span>
-      </a>
-      <nav class="global-nav" aria-label="メインナビゲーション">
-        <a href="index.html" class="nav-item active">ホーム</a>
-        <a href="usage.html" class="nav-item">使い方</a>
-        <a href="members.html" class="nav-item">メンバー紹介</a>
-      </nav>
-      <button class="menu-toggle" aria-expanded="false" aria-label="メニュー">☰</button>
-    </div>
-  </header>
-
-  
-  <main>
-    <!-- 背景を付与するためにクラス hero--paypayish-bg を追加 -->
-    <section class="hero hero--paypayish-bg">
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
-          <p class="lead">青学ペイは学内で使える簡単・安全な決済アプリのプロトタイプです。現在の実装状況やこれからのロードマップをこちらでご紹介します。</p>
-
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="usage.html">使い方を見る</a>
-            <a class="btn btn-outline" href="#features">特徴を見る</a>
-          </div>
-        </div>
-
-        <!-- 右側のビジュアル（背景扱い）。上のスクショを assets/qr-hero.png として配置してください -->
-        <div class="hero-visual" aria-hidden="true">
-          <img class="hero-phone" src="assets/qr-hero.png" alt="">
-        </div>
-      </div>
-    </section>
-<!-- ▼▼▼ ダウンロードバナーをここに挿入 ▼▼▼ -->
-  <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
-    <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
-      <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
-      <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
-        いますぐ<br>
-        <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
-      </div>
-    </div>
-    <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#316745; font-weight:700; font-size:1.1em; padding:12px 34px; border-radius:12px; text-decoration:none; box-shadow:0 2px 8px rgba(49,103,69,0.08); transition:background 0.2s;">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:26px; vertical-align:middle; margin-right:8px;">
-      TestFlightで体験
-    </a>
-    <div style="margin-top:10px; font-size:0.98em; color:#888;">
-      ※iOSのみ対応／App Storeには未公開
-    </div>
-  </div>
-  <!-- ▲▲▲ ダウンロードバナーここまで ▲▲▲ -->
-    <section id="features" class="features container">
-      <h2 class="section-title">主な特徴</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>簡単な操作</h3>
-          <p>QRコード読み取りやワンタップでの支払いに対応。直感的なUIで誰でも使えます。</p>
-        </article>
-
-        <article class="card">
-          <h3>学内向けの設計</h3>
-          <p>学生証や購買データと連携し、学内の利用に最適化された機能を提供します。</p>
-        </article>
-
-        <article class="card">
-          <h3>安全性</h3>
-          <p>認証・暗号化など基本的なセキュリティ設計を取り入れています（開発中）。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="status container">
-      <h2 class="section-title">現在の開発状況</h2>
-      <p>プロトタイプ段階。UI/UX の整備、決済フローの実装、テストを順次進めています。Issue や PR でご協力いただける方は大歓迎です。</p>
-      <ul class="status-list">
-        <li>UI デザイン: 進行中</li>
-        <li>QR 決済連携: 設計中</li>
-        <li>ユーザーテスト: これから</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <small>&copy; <span id="year"></span> AogakuPay</small>
-      </div>
-      <div class="footer-right">
-        <a href="https://akikan987.github.io/aogakupay/usage.html" target="_blank" style="font-size:1em; color:#3f729b; text-decoration:none;">
-          利用規約・プライバシーポリシー
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // 現在年をフッターに反映
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // モバイルメニュー簡易開閉
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.global-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
-  </script>
-</body>
-</html>
+:root{
+  --bg:#ffffff;
+  --text:#1b1b1f;
+  --muted:#6b7280;
+  --primary:#316745;
+  --accent:#49a06b;
+  --card:#ffffff;
+  --glass:rgba(49,103,69,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans JP';background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.container{width:min(1100px,92%);margin:0 auto}
+.site-header{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;color:#fff;text-decoration:none}
+.logo-mark{display:inline-flex;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.12);align-items:center;justify-content:center;font-weight:700;margin-right:10px}
+.logo-text{font-weight:700}
+.global-nav{display:flex !important;gap:18px}
+.global-nav .nav-item{color:rgba(255,255,255,0.9);text-decoration:none;padding:8px 10px;border-radius:8px}
+.global-nav .nav-item.active{background:rgba(255,255,255,0.12)}
+.menu-toggle{display:none !important;background:none;border:0;color:#fff;font-size:20px}
+.hero{padding:48px 0}
+.hero-inner{display:flex;gap:30px;align-items:center}
+.hero-content{flex:1}
+.lead{color:var(--muted);font-size:18px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn-primary{background:#fff;color:var(--primary)}
+.btn-outline{border:2px solid rgba(0,0,0,0.06);color:var(--text);background:transparent;margin-left:10px}
+.mock-phone{width:220px;height:420px;border-radius:20px;background:linear-gradient(180deg,#fff,#fff);box-shadow:0 10px 30px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center}
+.mock-screen{width:90%;height:85%;border-radius:14px;background:linear-gradient(180deg,#fafafa,#fff);padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+.balance{font-size:14px;color:var(--muted)}
+.pay-btn{background:var(--primary);color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:700}
+.features{padding:36px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,0.04)}
+.status{padding:36px 0}
+.site-footer{border-top:1px solid rgba(0,0,0,0.06);padding:18px 0;margin-top:40px}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.members-intro {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 0;
+}
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+}
+.member-photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 1em;
+  background: #f5f5f5;
+  display: block;
+}
+@media(max-width:800px){
+  .global-nav .nav-item {
+    font-size: 13px;
+    padding: 6px 6px;
+  }
+}
+.hero--paypayish-bg{
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(90deg, rgba(49,103,69,0.04), rgba(49,103,69,0));
+}
+.hero--paypayish-bg::before{
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -160px;
+  width: min(1100px, 90vw);
+  height: min(750px, 90vw);
+  background: url("assets/hero-bg.svg") right top / cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(0.0001deg);
+}
+.hero-visual{
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  position: relative;
+  z-index: 1;
+}
+.hero-phone{
+  width: clamp(120px, 16vw, 180px);
+  aspect-ratio: 19.5 / 9;
+  height: auto;
+  max-height: 36vh;
+  border-radius: 28px;
+  background: linear-gradient(180deg,rgba(255,255,255,0.94) 70%,rgba(255,255,255,0.7) 100%);
+  box-shadow:
+    0 10px 32px rgba(49,103,69,0.13),
+    0 1.5px 6px rgba(49,103,69,0.07);
+  mix-blend-mode: lighten;
+  border: 1px solid rgba(49,103,69,0.07);
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 800px){
+  .hero{padding: 40px 0}
+  .hero-visual{display:none}
+  .hero--paypayish-bg::before{
+    right: -220px;
+    width: 120vw;
+    height: 60vw;
+    opacity: 0.35;
+  }
+}
+@media (min-width: 1280px){
+  .hero-phone{
+    width: clamp(120px, 12vw, 160px);
+    max-height: 32vh;
+  }
+}
+.app-header{
+  text-align: center;
+  margin: 1.5em 0 4em;
+}
+.app-header .app-icon{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.app-header .social-link{
+  display: inline-block;
+  margin-top: 1em;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #3f729b;
+  text-decoration: none;
+}
+.app-header .social-link:hover{
+  text-decoration: underline;
+}
+@media (max-width: 480px){
+  .app-header{ margin: 1em 0 3em; }
+  .app-header .app-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+  }
+  .app-header .social-link{ font-size: 1.2em; }
+}
+#features .card{
+  box-shadow: 0 18px 48px rgba(17,24,39,0.28), 0 6px 18px rgba(17,24,39,0.18);
+}
