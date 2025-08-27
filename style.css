@@ -121,9 +121,7 @@ body{
   border-radius: 28px;
   /* ↓ 透かしと背景の境界線（白フチや背景色変化）の原因になるものを消す */
   background: none !important;
-  box-shadow:
-    0 10px 32px rgba(49,103,69,0.13),
-    0 1.5px 6px rgba(49,103,69,0.07);
+  box-shadow: none !important;
   /* mix-blend-modeやborderも透かし部分のエッジになるので消す */
   mix-blend-mode: normal !important;
   border: none !important;
