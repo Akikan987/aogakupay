@@ -90,13 +90,28 @@ body {
 /* ヒーロー */
 .hero {
   padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero--paypayish-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background: url("assets/hero-bg.svg") right top / cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transform: none;
 }
 .hero-inner {
   display: flex;
   gap: 30px;
   align-items: center;
-  position: relative; /* 追加: hero-bgとの重なり制御 */
-  z-index: 1;         /* 追加: hero-bgとの重なり制御 */
+  position: relative;
+  z-index: 1;
 }
 .hero-content {
   flex: 1;
@@ -122,7 +137,6 @@ body {
   background: transparent;
   margin-left: 10px;
 }
-/* ▼▼▼ フィードバックボタンも特徴を見るボタンと統一 ▼▼▼ */
 .btn-feedback {
   border: 2px solid rgba(0, 0, 0, 0.06);
   color: var(--text);
@@ -135,27 +149,7 @@ body {
   color: var(--primary);
   border-color: var(--primary);
 }
-/* ▲▲▲ */
 
-/* PayPay風背景ウェーブ */
-.hero--paypayish-bg {
-  position: relative;
-  overflow: hidden;
-  background-image: linear-gradient(90deg, rgba(49, 103, 69, 0.04), rgba(49, 103, 69, 0));
-}
-.hero--paypayish-bg::before {
-  content: "";
-  position: absolute;
-  top: -120px;
-  right: -160px;
-  width: min(1100px, 90vw);
-  height: min(750px, 90vw);
-  background: url("assets/hero-bg.svg") right top / cover no-repeat;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 0; /* 追加: hero-innerより下に表示 */
-  transform: rotate(0.0001deg);
-}
 .hero-visual {
   flex: 0 0 auto;
   display: flex;
@@ -194,6 +188,7 @@ body {
   }
   .hero--paypayish-bg::before {
     right: -220px;
+    left: auto;
     width: 120vw;
     height: 60vw;
     opacity: 0.35;
