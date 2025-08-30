@@ -96,6 +96,8 @@ body {
   display: flex;
   gap: 30px;
   align-items: center;
+ position: relative;
+  z-index: 1;
 }
 .hero-content {
   flex: 1;
