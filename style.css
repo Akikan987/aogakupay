@@ -120,7 +120,16 @@ body {
   background: transparent;
   margin-left: 10px;
 }
-
+/* ▼▼▼ フィードバックボタンも特徴を見るボタンと統一 ▼▼▼ */
+.btn-feedback {
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  color: var(--text);
+  background: transparent;
+  margin-left: 10px;
+  /* btn-outlineと同じスタイル */
+  /* 必要であれば: */
+  /* transition: background 0.15s, color 0.15s, border-color 0.15s; */
+}
 /* PayPay風背景ウェーブ */
 .hero--paypayish-bg {
   position: relative;
