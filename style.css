@@ -354,3 +354,22 @@ body {
     padding: 6px 6px;
   }
 }
+
+@media (max-width: 800px) {
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .hero-ctas .btn,
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline,
+  .hero-ctas .btn-feedback {
+    margin-left: 0 !important;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+  }
+}
