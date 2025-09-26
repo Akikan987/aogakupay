@@ -11,6 +11,10 @@
   --status-red-border: #e53935;
   --status-green: #e3fcec;
   --status-green-border: #43a047;
+
+  /* 追加: ボタン用カラー */
+  --btn-normal-green: #316745;
+  --btn-hover-black: #1b1b1f;
 }
 
 * {
@@ -126,26 +130,39 @@ body {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
+  /* 追加: transitionで色変化をなめらかに */
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
-.btn-primary {
- border: 2px solid rgba(0, 0, 0, 0.06);
-  background: #fff;
-  color: var(--primary);
-}
+
+/* 使い方・特徴ボタン（.btn-primary, .btn-outline）通常時は緑、フィードバックボタンは従来通り */
+.btn-primary,
 .btn-outline {
-  border: 2px solid rgba(0, 0, 0, 0.06);
-  color: var(--text);
-  background: #fff;
-  margin-left: 10px;
+  color: var(--btn-normal-green); /* 通常時緑色 */
 }
+
+/* 使い方・特徴ボタンのホバー・フォーカス・アクティブ時は黒色 */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: var(--btn-hover-black); /* ホバー・クリック時黒色 */
+  background: rgba(49, 103, 69, 0.08); /* 従来のホバー背景 */
+  border-color: var(--primary); /* 従来のホバー枠 */
+}
+
+/* フィードバックボタンは色変更しない（従来通り） */
 .btn-feedback {
   border: 2px solid rgba(0, 0, 0, 0.06);
   color: var(--text);
   background: #fff;
   margin-left: 10px;
 }
+
 .btn-feedback:hover,
-.btn-outline:hover {
+.btn-feedback:focus,
+.btn-feedback:active {
   background: rgba(49, 103, 69, 0.08);
   color: var(--primary);
   border-color: var(--primary);
