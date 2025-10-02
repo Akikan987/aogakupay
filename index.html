@@ -10,7 +10,6 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
-        <!-- テキストロゴ。画像を使う場合は <img> に差し替えてクださい -->
         <img class="logo-mark" src="photoes/app_icon.png" alt="青学ペイ ロゴ">
         <span class="logo-text">青学ペイ</span>
       </a>
@@ -23,31 +22,14 @@
     </div>
   </header>
 
-  
   <main>
-    <!-- 背景を付与するためにクラス hero--paypayish-bg を追加 -->
-    <section class="hero hero--paypayish-bg">
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
-          <p class="lead">
-            青学ペイは学内で使える簡単・安全な決済アプリ<br>
-            のプロトタイプです。
-            <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
+    <!-- ▼▼▼ qrhero画像（バナー直上に移動＆拡大） ▼▼▼ -->
+    <div class="qrhero-img-wrapper">
+      <img class="qrhero-phone" src="assets/qr-hero.png" alt="QRヒーロー画像">
+    </div>
+    <!-- ▲▲▲ qrhero画像ここまで ▲▲▲ -->
 
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="usage.html">使い方を見る</a>
-            <a class="btn btn-outline" href="#features">特徴を見る</a>
-            <a class="btn btn-feedback" href="https://forms.gle/uufPVv7yxR5w3acG6" target="_blank" rel="noopener noreferrer">フィードバックを送る</a>
-          </div>
-        </div>
-        <!-- 右側のビジュアル -->
-        <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
-          <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
-        </div>
-      </div>
-    </section>
-     <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
+    <!-- ダウンロードバナー -->
     <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
       <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
         <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
@@ -56,8 +38,7 @@
           <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
         </div>
       </div>
-      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:12px 28px; border-radius:14px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.10); vertical-align:middle; transition:box-shadow .1s;">
-        <!-- App Store ロゴ画像を削除 -->
+      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:12px 40px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); text-decoration:none; letter-spacing:0.04em; margin-bottom:0;">
         TestFlightで体験
       </a>
       <div style="margin-top:10px; font-size:0.98em; color:#888;">
@@ -83,7 +64,7 @@
         </article>
       </div>
     </section>
-   <section class="status container">
+    <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
       <div class="status-cards">
         <div class="status-card status-pending">
@@ -104,25 +85,25 @@
         </div>
       </div>
     </section>
-       <section class="status container">
+    <section class="status container">
       <!-- ...（ここは既存の開発状況の内容）... -->
-   </section>
-   <!-- Instagram最新投稿ウィジェット -->
-   <section class="instagram-feed container">
-     <h2 class="section-title">Instagram 最新投稿</h2>
-     <div style="display: flex; justify-content: center;">
-       <iframe src="https://snapwidget.com/embed/1106536"
-               class="snapwidget-widget"
-               allowtransparency="true"
-               frameborder="0"
-               scrolling="no"
-               style="border:none; overflow:hidden; width:1800px; height:600px"
-               title="Posts from Instagram"></iframe>
-     </div>
-     <div style="text-align:center; margin-top:8px;">
-       <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
-     </div>
-   </section>
+    </section>
+    <!-- Instagram最新投稿ウィジェット -->
+    <section class="instagram-feed container">
+      <h2 class="section-title">Instagram 最新投稿</h2>
+      <div style="display: flex; justify-content: center;">
+        <iframe src="https://snapwidget.com/embed/1106536"
+                class="snapwidget-widget"
+                allowtransparency="true"
+                frameborder="0"
+                scrolling="no"
+                style="border:none; overflow:hidden; width:1800px; height:600px"
+                title="Posts from Instagram"></iframe>
+      </div>
+      <div style="text-align:center; margin-top:8px;">
+        <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <div class="container footer-inner">
