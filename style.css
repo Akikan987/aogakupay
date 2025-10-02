@@ -130,26 +130,23 @@ body {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  /* 追加: transitionで色変化をなめらかに */
   transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 
 /* 使い方・特徴ボタン（.btn-primary, .btn-outline）通常時は緑、フィードバックボタンは従来通り */
 .btn-primary,
 .btn-outline {
-  color: var(--btn-normal-green); /* 通常時緑色 */
+  color: var(--btn-normal-green);
 }
-
-/* 使い方・特徴ボタンのホバー・フォーカス・アクティブ時は黒色 */
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
-  color: var(--btn-hover-black); /* ホバー・クリック時黒色 */
-  background: rgba(49, 103, 69, 0.08); /* 従来のホバー背景 */
-  border-color: var(--primary); /* 従来のホバー枠 */
+  color: var(--btn-hover-black);
+  background: rgba(49, 103, 69, 0.08);
+  border-color: var(--primary);
 }
 
 /* フィードバックボタンは色変更しない（従来通り） */
@@ -167,6 +164,44 @@ body {
   color: var(--primary);
   border-color: var(--primary);
 }
+
+/* ▼▼▼ 追加: qrhero画像バナー上配置用 ▼▼▼ */
+.qrhero-img-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: -18px; /* バナーにぴったりくっつける */
+  margin-top: 40px;
+  pointer-events: none;
+  z-index: 10;
+  position: relative;
+}
+.qrhero-phone {
+  width: clamp(260px, 33vw, 420px);
+  max-width: 98vw;
+  max-height: 320px;
+  object-fit: contain;
+  object-position: top;
+  display: block;
+  box-shadow: 0 8px 32px rgba(17,24,39,0.18);
+  border-radius: 28px;
+  z-index: 11;
+  background: #fff;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .qrhero-phone {
+    width: 75vw;
+    max-width: 440px;
+    max-height: 230px;
+  }
+  .qrhero-img-wrapper {
+    margin-top: 18px;
+    margin-bottom: -12px;
+  }
+}
+/* ▲▲▲ ここまで追加 ▲▲▲ */
 
 .hero-visual {
   flex: 0 0 auto;
