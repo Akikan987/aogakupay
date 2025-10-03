@@ -165,43 +165,55 @@ body {
   border-color: var(--primary);
 }
 
-/* ▼▼▼ 追加: qrhero画像バナー上配置用 ▼▼▼ */
+/* ▼▼▼ 修正: qrhero画像を右寄せ＆小さめでバナー上に配置 ▼▼▼ */
 .qrhero-img-wrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* 右寄せ */
   align-items: flex-end;
   margin-bottom: -18px; /* バナーにぴったりくっつける */
-  margin-top: 40px;
+  margin-top: 32px;
   pointer-events: none;
   z-index: 10;
   position: relative;
+  min-height: 1px;
 }
 .qrhero-phone {
-  width: clamp(260px, 33vw, 420px);
-  max-width: 98vw;
-  max-height: 320px;
+  width: clamp(200px, 28vw, 340px); /* hero-visual内の画像と同じ */
+  max-width: 95vw;
+  max-height: 48vh;
+  aspect-ratio: auto;
+  border-radius: 28px;
+  background: none !important;
+  box-shadow: 0 8px 32px rgba(17,24,39,0.12);
+  mix-blend-mode: normal !important;
+  border: none !important;
   object-fit: contain;
   object-position: top;
   display: block;
-  box-shadow: 0 8px 32px rgba(17,24,39,0.18);
-  border-radius: 28px;
-  z-index: 11;
-  background: #fff;
-  margin: 0 auto;
+  margin: 0 2vw 0 0;
 }
-@media (max-width: 700px) {
+@media (min-width: 1280px) {
   .qrhero-phone {
-    width: 75vw;
-    max-width: 440px;
-    max-height: 230px;
-  }
-  .qrhero-img-wrapper {
-    margin-top: 18px;
-    margin-bottom: -12px;
+    width: clamp(220px, 22vw, 380px);
+    max-height: 44vh;
   }
 }
-/* ▲▲▲ ここまで追加 ▲▲▲ */
+@media (max-width: 800px) {
+  .qrhero-img-wrapper {
+    margin-top: 16px;
+    margin-bottom: -10px;
+    justify-content: flex-end;
+  }
+  .qrhero-phone {
+    width: 50vw;
+    min-width: 160px;
+    max-width: 280px;
+    max-height: 32vh;
+    margin-right: 2vw;
+  }
+}
+/* ▲▲▲ ここまで修正 ▲▲▲ */
 
 .hero-visual {
   flex: 0 0 auto;
