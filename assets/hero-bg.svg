@@ -13,6 +13,6 @@
   <rect x="0" y="0" width="1100" height="750" fill="url(#heroGrad)"/>
   <!-- 下端に白グラデで境界を溶かす -->
   <rect x="0" y="700" width="1100" height="50" fill="url(#fadeBottom)"/>
-  <!-- 右上のカーブ、必要に応じて修正 -->
-  <path d="M1100,0 Q870,90 950,400 Q1000,650 1100,750 L1100,0Z" fill="#49a06b" fill-opacity="0.13"/>
+  <!-- 右上のカーブ、画面中央付近まで広げる修正 -->
+  <path d="M1100,0 Q400,90 400,400 Q400,650 1100,750 L1100,0Z" fill="#49a06b" fill-opacity="0.13"/>
 </svg>
