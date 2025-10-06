@@ -23,12 +23,29 @@
   </header>
 
   <main>
-    <!-- ▼▼▼ ダウンロードバナー直上に右寄せ画像（ぴったりくっつける） ▼▼▼ -->
-      <img class="qrhero-phone" src="assets/qr-hero.png" alt="QRヒーロー画像">
-    </div>
-    <!-- ▲▲▲ ここまで ▲▲▲ -->
+    <!-- 背景を付与するためにクラス hero--paypayish-bg を追加 -->
+    <section class="hero hero--paypayish-bg">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
+          <p class="lead">
+            青学ペイは学内で使える簡単・安全な決済アプリ<br>
+            のプロトタイプです。
+            <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
 
-    <!-- ダウンロードバナー -->
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="usage.html">使い方を見る</a>
+            <a class="btn btn-outline" href="#features">特徴を見る</a>
+            <a class="btn btn-feedback" href="https://forms.gle/uufPVv7yxR5w3acG6" target="_blank" rel="noopener noreferrer">フィードバックを送る</a>
+          </div>
+        </div>
+        <!-- 右側のビジュアル -->
+        <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
+          <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
+        </div>
+      </div>
+    </section>
+     <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
     <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
       <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
         <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
@@ -63,7 +80,7 @@
         </article>
       </div>
     </section>
-    <section class="status container">
+   <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
       <div class="status-cards">
         <div class="status-card status-pending">
@@ -84,25 +101,25 @@
         </div>
       </div>
     </section>
-    <section class="status container">
+       <section class="status container">
       <!-- ...（ここは既存の開発状況の内容）... -->
-    </section>
-    <!-- Instagram最新投稿ウィジェット -->
-    <section class="instagram-feed container">
-      <h2 class="section-title">Instagram 最新投稿</h2>
-      <div style="display: flex; justify-content: center;">
-        <iframe src="https://snapwidget.com/embed/1106536"
-                class="snapwidget-widget"
-                allowtransparency="true"
-                frameborder="0"
-                scrolling="no"
-                style="border:none; overflow:hidden; width:1800px; height:600px"
-                title="Posts from Instagram"></iframe>
-      </div>
-      <div style="text-align:center; margin-top:8px;">
-        <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
-      </div>
-    </section>
+   </section>
+   <!-- Instagram最新投稿ウィジェット -->
+   <section class="instagram-feed container">
+     <h2 class="section-title">Instagram 最新投稿</h2>
+     <div style="display: flex; justify-content: center;">
+       <iframe src="https://snapwidget.com/embed/1106536"
+               class="snapwidget-widget"
+               allowtransparency="true"
+               frameborder="0"
+               scrolling="no"
+               style="border:none; overflow:hidden; width:1800px; height:600px"
+               title="Posts from Instagram"></iframe>
+     </div>
+     <div style="text-align:center; margin-top:8px;">
+       <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
+     </div>
+   </section>
   </main>
   <footer class="site-footer">
     <div class="container footer-inner">
