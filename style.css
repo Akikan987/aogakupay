@@ -1,36 +1,165 @@
-.site-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 18px 0;
-  margin-top: 40px;
+:root {
+  --bg: #ffffff;
+  --text: #1b1b1f;
+  --muted: #6b7280;
+  --primary: #316745;
+  --accent: #49a06b;
+  --card: #ffffff;
+  --glass: rgba(49, 103, 69, 0.06);
+
+  --status-red: #ffebee;
+  --status-red-border: #e53935;
+  --status-green: #e3fcec;
+  --status-green-border: #43a047;
+
+  /* 追加: ボタン用カラー */
+  --btn-normal-green: #316745;
+  --btn-hover-black: #1b1b1f;
 }
-.footer-inner {
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans JP';
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.site-header {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #fff;
+}
+.header-inner {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  padding: 14px 0;
 }
-.footer-left,
-.footer-center,
-.footer-right {
+.logo {
   display: flex;
   align-items: center;
+  color: #fff;
+  text-decoration: none;
 }
-.footer-center {
+.logo-mark {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  align-items: center;
   justify-content: center;
+  font-weight: 700;
+  margin-right: 10px;
+}
+.logo-text {
+  font-weight: 700;
+}
+.global-nav {
+  display: flex !important;
+  gap: 18px;
+}
+.global-nav .nav-item {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.global-nav .nav-item.active {
+  background: rgba(255, 255, 255, 0.12);
+}
+.menu-toggle {
+  display: none !important;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* ヒーロー */
+.hero {
+  padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero--paypayish-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background: url("assets/hero-bg.svg") right top / cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  transform: none;
+}
+.hero-inner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-content {
   flex: 1;
 }
+.lead {
+  color: var(--muted);
+  font-size: 18px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  /* 追加: transitionで色変化をなめらかに */
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+/* 使い方・特徴ボタン（.btn-primary, .btn-outline）通常時は緑、フィードバックボタンは従来通り */
+.btn-primary,
+.btn-outline {
+  color: var(--btn-normal-green); /* 通常時緑色 */
+}
+
+/* 使い方・特徴ボタンのホバー・フォーカス・アクティブ時は黒色 */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+  color: var(--btn-hover-black); /* ホバー・クリック時黒色 */
+  background: rgba(49, 103, 69, 0.08); /* 従来のホバー背景 */
+  border-color: var(--primary); /* 従来のホバー枠 */
+}
+
+/* フィードバックボタンは色変更しない（従来通り） */
 .btn-feedback {
   border: 2px solid rgba(0, 0, 0, 0.06);
   color: var(--text);
   background: rgba(49, 103, 69, 0.08);
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  margin-left: 10px;
 }
+
 .btn-feedback:hover,
 .btn-feedback:focus,
 .btn-feedback:active {
@@ -38,15 +167,227 @@
   color: var(--primary);
   border-color: var(--primary);
 }
-@media (max-width: 700px) {
-  .footer-inner {
-    flex-direction: column;
-    gap: 18px;
+
+.hero-visual {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  position: relative;
+  z-index: 1;
+}
+.hero-phone {
+  width: clamp(200px, 28vw, 340px);
+  max-height: 48vh;
+  aspect-ratio: auto;
+  border-radius: 28px;
+  background: none !important;
+  box-shadow: none !important;
+  mix-blend-mode: normal !important;
+  border: none !important;
+  object-fit: contain;
+  object-position: top;
+  display: block;
+  margin-top: 0;
+}
+@media (min-width: 1280px) {
+  .hero-phone {
+    width: clamp(220px, 22vw, 380px);
+    max-height: 44vh;
   }
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    justify-content: center;
+}
+@media (max-width: 800px) {
+  .hero {
+    padding: 40px 0;
+  }
+  .hero-visual {
+    display: none;
+  }
+  .hero--paypayish-bg::before {
+    right: -220px;
+    left: auto;
+    width: 120vw;
+    height: 60vw;
+    opacity: 0.35;
+  }
+}
+
+/* ダウンロードバナー（インラインstyleのみ） */
+
+/* 主な特徴カード */
+.features {
+  padding: 36px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.04);
+}
+#features .card {
+  box-shadow: 0 18px 48px rgba(17,24,39,0.28), 0 6px 18px rgba(17,24,39,0.18);
+}
+
+/* 開発状況ステータスカード */
+.status {
+  padding: 36px 0;
+}
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+  margin-top: 1.5em;
+}
+.status-card {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 4px 18px rgba(17,24,39,0.12);
+  border-left: 8px solid var(--status-red-border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.status-card .status-title {
+  font-size: 1.13em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+.status-card .status-desc {
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* 赤色（進行中・設計中・これから） */
+.status-card.status-pending {
+  background: var(--status-red);
+  border-left-color: var(--status-red-border);
+  color: #b71c1c;
+}
+/* 緑色（完了・実施中） */
+.status-card.status-done {
+  background: var(--status-green);
+  border-left-color: var(--status-green-border);
+  color: #256029;
+}
+
+@media (max-width: 700px) {
+  .status-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* サイトフッター */
+.site-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 18px 0;
+  margin-top: 40px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* メンバー紹介 */
+.members-intro {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 0;
+}
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+.member-photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1em;
+  background: #f5f5f5;
+  display: block;
+}
+
+/* アプリ紹介用ヘッダー（詳細ページ用）*/
+.app-header {
+  text-align: center;
+  margin: 1.5em 0 4em;
+}
+.app-header .app-icon {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.app-header .social-link {
+  display: inline-block;
+  margin-top: 1em;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #3f729b;
+  text-decoration: none;
+}
+.app-header .social-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 480px) {
+  .app-header {
+    margin: 1em 0 3em;
+  }
+  .app-header .app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+  }
+  .app-header .social-link {
+    font-size: 1.2em;
+  }
+}
+
+/* ナビゲーションのレスポンシブ調整 */
+@media (max-width: 800px) {
+  .global-nav .nav-item {
+    font-size: 13px;
+    padding: 6px 6px;
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .hero-ctas .btn,
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline,
+  .hero-ctas .btn-feedback {
+    margin-left: 0 !important;
     width: 100%;
+    text-align: left;
+    box-sizing: border-box;
   }
 }
