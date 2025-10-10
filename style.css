@@ -482,3 +482,57 @@ body {
 }
 
 /* ====== 既存の.status, .status-cardなどは不要になるので削除可 ====== */
+/* ====== 開発状況プログレスバー ====== */
+.progress-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 30px;
+  margin-bottom: 36px;
+}
+.progress-item {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(17,24,39,0.12);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.progress-label {
+  font-size: 1.08em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+.progress-container {
+  width: 100%;
+  background: #eee;
+  border-radius: 8px;
+  height: 20px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transition: width 0.5s;
+}
+.progress-percent {
+  text-align: right;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1em;
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .progress-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .progress-item {
+    padding: 14px 12px;
+  }
+  .progress-container {
+    height: 16px;
+  }
+}
