@@ -74,7 +74,7 @@
       </div>
     </section>
 
-    <!-- 進捗率バー型の開発状況 -->
+    <!-- 進捗率バー型の開発状況（残り部分赤＋進捗率文字色変更対応） -->
     <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
       <div class="progress-list">
@@ -82,29 +82,33 @@
           <div class="progress-label">UI デザイン</div>
           <div class="progress-container">
             <div class="progress-bar" style="width: 70%;"></div>
+            <div class="progress-bar-remaining" style="width: 30%;"></div>
           </div>
-          <div class="progress-percent">進捗: 70%</div>
+          <div class="progress-percent">進捗: <span class="percent-value" data-percent="70">70%</span></div>
         </div>
         <div class="progress-item">
           <div class="progress-label">QR 決済連携</div>
           <div class="progress-container">
             <div class="progress-bar" style="width: 40%;"></div>
+            <div class="progress-bar-remaining" style="width: 60%;"></div>
           </div>
-          <div class="progress-percent">進捗: 40%</div>
+          <div class="progress-percent">進捗: <span class="percent-value" data-percent="40">40%</span></div>
         </div>
         <div class="progress-item">
           <div class="progress-label">ユーザーテスト</div>
           <div class="progress-container">
             <div class="progress-bar" style="width: 0%;"></div>
+            <div class="progress-bar-remaining" style="width: 100%;"></div>
           </div>
-          <div class="progress-percent">進捗: 0%</div>
+          <div class="progress-percent">進捗: <span class="percent-value" data-percent="0">0%</span></div>
         </div>
         <div class="progress-item">
           <div class="progress-label">青学ペイ for Android</div>
           <div class="progress-container">
             <div class="progress-bar" style="width: 10%;"></div>
+            <div class="progress-bar-remaining" style="width: 90%;"></div>
           </div>
-          <div class="progress-percent">進捗: 10%</div>
+          <div class="progress-percent">進捗: <span class="percent-value" data-percent="10">10%</span></div>
         </div>
       </div>
     </section>
@@ -150,6 +154,19 @@
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open');
+    });
+
+    // 進捗率の文字色をバー色と同じにする
+    document.querySelectorAll('.percent-value').forEach(function(span) {
+      const percent = parseInt(span.dataset.percent, 10);
+      let color = '';
+      if (percent >= 70) {
+        color = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+      } else {
+        color = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+      }
+      span.style.color = color.trim();
+      span.style.fontWeight = 'bold';
     });
   </script>
 </body>
