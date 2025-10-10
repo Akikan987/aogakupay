@@ -23,7 +23,6 @@
   </header>
 
   <main>
-    <!-- 背景を付与するためにクラス hero--paypayish-bg を追加 -->
     <section class="hero hero--paypayish-bg">
       <div class="container hero-inner">
         <div class="hero-content">
@@ -38,13 +37,11 @@
             <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">特徴を見る</a>
           </div>
         </div>
-        <!-- 右側のビジュアル -->
         <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
           <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
         </div>
       </div>
     </section>
-    <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
     <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
       <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
         <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
@@ -58,7 +55,6 @@
         ※iOSのみ対応／App Storeには未公開
       </div>
     </div>
-    <!-- ▲▲▲ ダウンロードバナーここまで ▲▲▲ -->
 
     <section id="features" class="features container">
       <h2 class="section-title">主な特徴</h2>
@@ -78,32 +74,37 @@
       </div>
     </section>
 
+    <!-- 進捗率バー型の開発状況 -->
     <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
-      <!-- プロセスバー型進捗表示 -->
-      <div class="process-bar">
-        <div class="process-step completed">
-          <div class="step-circle"></div>
-          <div class="step-label">UI デザイン</div>
-          <div class="step-desc">進行中</div>
+      <div class="progress-list">
+        <div class="progress-item">
+          <div class="progress-label">UI デザイン</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 70%;"></div>
+          </div>
+          <div class="progress-percent">進捗: 70%</div>
         </div>
-        <div class="process-line"></div>
-        <div class="process-step">
-          <div class="step-circle"></div>
-          <div class="step-label">QR 決済連携</div>
-          <div class="step-desc">設計中</div>
+        <div class="progress-item">
+          <div class="progress-label">QR 決済連携</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 40%;"></div>
+          </div>
+          <div class="progress-percent">進捗: 40%</div>
         </div>
-        <div class="process-line"></div>
-        <div class="process-step">
-          <div class="step-circle"></div>
-          <div class="step-label">ユーザーテスト</div>
-          <div class="step-desc">これから</div>
+        <div class="progress-item">
+          <div class="progress-label">ユーザーテスト</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 0%;"></div>
+          </div>
+          <div class="progress-percent">進捗: 0%</div>
         </div>
-        <div class="process-line"></div>
-        <div class="process-step">
-          <div class="step-circle"></div>
-          <div class="step-label">青学ペイ for Android</div>
-          <div class="step-desc">設計中</div>
+        <div class="progress-item">
+          <div class="progress-label">青学ペイ for Android</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 10%;"></div>
+          </div>
+          <div class="progress-percent">進捗: 10%</div>
         </div>
       </div>
     </section>
