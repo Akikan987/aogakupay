@@ -34,8 +34,8 @@
             <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
 
           <div class="hero-ctas">
-            <a class="btn btn-feedback"" href="usage.html"target="_blank " rel="noopener noreferrer">使い方を見る</a>
-            <a class="btn btn-feedback"" href="usage.html"target="_blank " rel="noopener noreferrer">特徴を見る</a>
+            <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">使い方を見る</a>
+            <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">特徴を見る</a>
           </div>
         </div>
         <!-- 右側のビジュアル -->
@@ -44,7 +44,7 @@
         </div>
       </div>
     </section>
-     <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
+    <!-- ▼▼▼ ダウンロードバナー ▼▼▼ -->
     <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
       <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
         <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
@@ -53,7 +53,7 @@
           <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
         </div>
       </div>
-      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:11px 36px 11px 36px; border-radius:16px; margin-bottom:6px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.16);">TestFlightで体験</a>
+      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:10px 24px; border-radius:10px; text-decoration:none; margin-top:4px;">iOS版TestFlightから入手</a>
       <div style="margin-top:10px; font-size:0.98em; color:#888;">
         ※iOSのみ対応／App Storeには未公開
       </div>
@@ -77,46 +77,52 @@
         </article>
       </div>
     </section>
-   <section class="status container">
+
+    <section class="status container">
       <h2 class="section-title">現在の開発状況</h2>
-      <div class="status-cards">
-        <div class="status-card status-pending">
-          <div class="status-title">UI デザイン</div>
-          <div class="status-desc">進行中</div>
+      <!-- プロセスバー型進捗表示 -->
+      <div class="process-bar">
+        <div class="process-step completed">
+          <div class="step-circle"></div>
+          <div class="step-label">UI デザイン</div>
+          <div class="step-desc">進行中</div>
         </div>
-        <div class="status-card status-pending">
-          <div class="status-title">QR 決済連携</div>
-          <div class="status-desc">設計中</div>
+        <div class="process-line"></div>
+        <div class="process-step">
+          <div class="step-circle"></div>
+          <div class="step-label">QR 決済連携</div>
+          <div class="step-desc">設計中</div>
         </div>
-        <div class="status-card status-pending">
-          <div class="status-title">ユーザーテスト</div>
-          <div class="status-desc">これから</div>
+        <div class="process-line"></div>
+        <div class="process-step">
+          <div class="step-circle"></div>
+          <div class="step-label">ユーザーテスト</div>
+          <div class="step-desc">これから</div>
         </div>
-        <div class="status-card status-pending">
-          <div class="status-title">青学ペイ for Android</div>
-          <div class="status-desc">設計中</div>
+        <div class="process-line"></div>
+        <div class="process-step">
+          <div class="step-circle"></div>
+          <div class="step-label">青学ペイ for Android</div>
+          <div class="step-desc">設計中</div>
         </div>
       </div>
     </section>
-       <section class="status container">
-      <!-- ...（ここは既存の開発状況の内容）... -->
-   </section>
-   <!-- Instagram最新投稿ウィジェット -->
-   <section class="instagram-feed container">
-     <h2 class="section-title">Instagram 最新投稿</h2>
-     <div style="display: flex; justify-content: center;">
-       <iframe src="https://snapwidget.com/embed/1106536"
-               class="snapwidget-widget"
-               allowtransparency="true"
-               frameborder="0"
-               scrolling="no"
-               style="border:none; overflow:hidden; width:1800px; height:600px"
-               title="Posts from Instagram"></iframe>
-     </div>
-     <div style="text-align:center; margin-top:8px;">
-       <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
-     </div>
-   </section>
+
+    <section class="instagram-feed container">
+      <h2 class="section-title">Instagram 最新投稿</h2>
+      <div style="display: flex; justify-content: center;">
+        <iframe src="https://snapwidget.com/embed/1106536"
+                class="snapwidget-widget"
+                allowtransparency="true"
+                frameborder="0"
+                scrolling="no"
+                style="border:none; overflow:hidden; width:1800px; height:600px"
+                title="Posts from Instagram"></iframe>
+      </div>
+      <div style="text-align:center; margin-top:8px;">
+        <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <div class="container footer-inner">
