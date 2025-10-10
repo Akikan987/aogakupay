@@ -391,97 +391,6 @@ body {
     box-sizing: border-box;
   }
 }
-/* ===== 開発状況プロセスバー ===== */
-.process-bar {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0;
-  margin: 48px 0 36px 0;
-  position: relative;
-  flex-wrap: wrap;
-}
-.process-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 160px;
-  min-width: 120px;
-  position: relative;
-  z-index: 1;
-}
-.step-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--status-red);
-  border: 4px solid var(--status-red-border);
-  box-shadow: 0 2px 8px rgba(17,24,39,0.12);
-  margin-bottom: 10px;
-  transition: background 0.3s, border-color 0.3s;
-  position: relative;
-}
-.process-step.completed .step-circle {
-  background: var(--status-green);
-  border-color: var(--status-green-border);
-}
-.step-label {
-  font-size: 1.07em;
-  font-weight: 700;
-  margin-bottom: 0.2em;
-  color: var(--text);
-  text-align: center;
-}
-.process-step.completed .step-label {
-  color: #256029;
-}
-.step-desc {
-  font-size: 0.95em;
-  color: var(--muted);
-  margin-bottom: 0;
-  text-align: center;
-}
-.process-line {
-  width: 52px;
-  height: 6px;
-  background: var(--glass);
-  border-radius: 3px;
-  align-self: center;
-  margin: 0 0;
-  position: relative;
-  top: 13px;
-}
-@media (max-width: 900px) {
-  .process-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .process-line {
-    width: 6px;
-    height: 52px;
-    margin: 0;
-    top: 0;
-    left: 13px;
-  }
-}
-
-@media (max-width: 600px) {
-  .process-step {
-    min-width: 80px;
-  }
-  .step-circle {
-    width: 24px;
-    height: 24px;
-  }
-  .process-line {
-    width: 4px;
-    height: 36px;
-    left: 10px;
-  }
-}
-
-/* ====== 既存の.status, .status-cardなどは不要になるので削除可 ====== */
 /* ====== 開発状況プログレスバー ====== */
 .progress-list {
   display: grid;
@@ -506,23 +415,37 @@ body {
 }
 .progress-container {
   width: 100%;
-  background: #eee;
+  background: none;
   border-radius: 8px;
   height: 20px;
   margin-bottom: 8px;
   overflow: hidden;
+  position: relative;
+  display: flex;
 }
 .progress-bar {
   height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--primary));
+  border-radius: 8px 0 0 8px;
   transition: width 0.5s;
+  z-index: 1;
+}
+.progress-bar-remaining {
+  height: 100%;
+  background: linear-gradient(90deg, #ffebee 0%, #e53935 100%);
+  border-radius: 0 8px 8px 0;
+  transition: width 0.5s;
+  z-index: 0;
+  margin-left: -2px; /* バーの隙間防止 */
 }
 .progress-percent {
   text-align: right;
-  color: var(--accent);
   font-weight: bold;
   font-size: 1em;
   width: 100%;
+}
+.percent-value {
+  /* JSで色付けするのでCSSでは指定しない */
 }
 @media (max-width: 700px) {
   .progress-list {
