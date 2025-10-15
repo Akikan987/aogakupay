@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MDT84GPYB3');
-</script>
-<!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MDT84GPYB3');
+  </script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AogakuPay</title>
@@ -32,110 +31,125 @@
     </div>
   </header>
 
+  <nav class="sub-tabs container" aria-label="サブタブ">
+    <button id="subtab-app" class="subtab-btn active">アプリ紹介</button>
+    <button id="subtab-json" class="subtab-btn">青祭参加団体</button>
+  </nav>
+
   <main>
-    <section class="hero hero--paypayish-bg">
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
-          <p class="lead">
-            青学ペイは学内で使える簡単・安全な決済アプリ<br>
-            のプロトタイプです。
-            <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
+    <section id="app-section">
+      <section class="hero hero--paypayish-bg">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
+            <p class="lead">
+              青学ペイは学内で使える簡単・安全な決済アプリ<br>
+              のプロトタイプです。
+              <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
 
-          <div class="hero-ctas">
-            <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">使い方を見る</a>
-            <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">特徴を見る</a>
+            <div class="hero-ctas">
+              <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">使い方を見る</a>
+              <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">特徴を見る</a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
+            <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
-          <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
+      </section>
+      <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
+          <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
+          <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
+            いますぐ<br>
+            <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
+          </div>
+        </div>
+        <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:12px 36px; border-radius:16px; margin-top:8px; text-decoration:none;">
+          iOS版をダウンロード
+        </a>
+        <div style="margin-top:10px; font-size:0.98em; color:#888;">
+          ※iOSのみ対応／App Storeには未公開
         </div>
       </div>
+
+      <section class="features container">
+        <h2 class="section-title">主な特徴</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>簡単な操作</h3>
+            <p>QRコード読み取りやワンタップでの支払いに対応。直感的なUIで誰でも使えます。</p>
+          </article>
+          <article class="card">
+            <h3>学内向けの設計</h3>
+            <p>学生証や購買データと連携し、学内の利用に最適化された機能を提供します。</p>
+          </article>
+          <article class="card">
+            <h3>安全性</h3>
+            <p>認証・暗号化など基本的なセキュリティ設計を取り入れています（開発中）。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="status container">
+        <h2 class="section-title">現在の開発状況</h2>
+        <div class="progress-list">
+          <div class="progress-item">
+            <div class="progress-label">UI デザイン</div>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: 70%;"></div>
+              <div class="progress-bar-remaining" style="width: 30%;"></div>
+            </div>
+            <div class="progress-percent">進捗: <span class="percent-value" data-percent="70">70%</span></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">QR 決済連携</div>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: 40%;"></div>
+              <div class="progress-bar-remaining" style="width: 60%;"></div>
+            </div>
+            <div class="progress-percent">進捗: <span class="percent-value" data-percent="40">40%</span></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">ユーザーテスト</div>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: 0%;"></div>
+              <div class="progress-bar-remaining" style="width: 100%;"></div>
+            </div>
+            <div class="progress-percent">進捗: <span class="percent-value" data-percent="0">0%</span></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label">青学ペイ for Android</div>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: 10%;"></div>
+              <div class="progress-bar-remaining" style="width: 90%;"></div>
+            </div>
+            <div class="progress-percent">進捗: <span class="percent-value" data-percent="10">10%</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="instagram-feed container">
+        <h2 class="section-title">公式Instagram</h2>
+        <div style="display: flex; justify-content: center;">
+          <iframe src="https://snapwidget.com/embed/1106536"
+                  class="snapwidget-widget"
+                  allowtransparency="true"
+                  frameborder="0"
+                  scrolling="no"
+                  style="border:none; overflow:hidden; width:1800px; height:600px"
+                  title="Posts from Instagram"></iframe>
+        </div>
+        <div style="text-align:center; margin-top:8px;">
+          <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
+        </div>
+      </section>
     </section>
-    <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
-      <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
-        <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
-        <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
-          いますぐ<br>
-          <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
-        </div>
-      </div>
-      <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:10px 24px; border-radius:10px; text-decoration:none; margin-top:4px;">iOS版TestFlightから入手</a>
-      <div style="margin-top:10px; font-size:0.98em; color:#888;">
-        ※iOSのみ対応／App Storeには未公開
-      </div>
-    </div>
 
-    <section id="features" class="features container">
-      <h2 class="section-title">主な特徴</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>簡単な操作</h3>
-          <p>QRコード読み取りやワンタップでの支払いに対応。直感的なUIで誰でも使えます。</p>
-        </article>
-        <article class="card">
-          <h3>学内向けの設計</h3>
-          <p>学生証や購買データと連携し、学内の利用に最適化された機能を提供します。</p>
-        </article>
-        <article class="card">
-          <h3>安全性</h3>
-          <p>認証・暗号化など基本的なセキュリティ設計を取り入れています（開発中）。</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- 進捗率バー型の開発状況（残り部分赤＋進捗率文字色変更対応） -->
-    <section class="status container">
-      <h2 class="section-title">現在の開発状況</h2>
-      <div class="progress-list">
-        <div class="progress-item">
-          <div class="progress-label">UI デザイン</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 70%;"></div>
-            <div class="progress-bar-remaining" style="width: 30%;"></div>
-          </div>
-          <div class="progress-percent">進捗: <span class="percent-value" data-percent="70">70%</span></div>
-        </div>
-        <div class="progress-item">
-          <div class="progress-label">QR 決済連携</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 40%;"></div>
-            <div class="progress-bar-remaining" style="width: 60%;"></div>
-          </div>
-          <div class="progress-percent">進捗: <span class="percent-value" data-percent="40">40%</span></div>
-        </div>
-        <div class="progress-item">
-          <div class="progress-label">ユーザーテスト</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 0%;"></div>
-            <div class="progress-bar-remaining" style="width: 100%;"></div>
-          </div>
-          <div class="progress-percent">進捗: <span class="percent-value" data-percent="0">0%</span></div>
-        </div>
-        <div class="progress-item">
-          <div class="progress-label">青学ペイ for Android</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 10%;"></div>
-            <div class="progress-bar-remaining" style="width: 90%;"></div>
-          </div>
-          <div class="progress-percent">進捗: <span class="percent-value" data-percent="10">10%</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="instagram-feed container">
-      <h2 class="section-title">公式Instagram</h2>
-      <div style="display: flex; justify-content: center;">
-        <iframe src="https://snapwidget.com/embed/1106536"
-                class="snapwidget-widget"
-                allowtransparency="true"
-                frameborder="0"
-                scrolling="no"
-                style="border:none; overflow:hidden; width:1800px; height:600px"
-                title="Posts from Instagram"></iframe>
-      </div>
-      <div style="text-align:center; margin-top:8px;">
-        <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer">@aogaku.pay をもっと見る</a>
+    <section id="json-section" style="display:none;">
+      <div class="container">
+        <h2 class="section-title">青祭参加団体</h2>
+        <pre id="json-viewer" style="background:#f5f5f5; padding:1em; border-radius:8px; overflow-x:auto;"></pre>
       </div>
     </section>
   </main>
@@ -155,9 +169,35 @@
     </div>
   </footer>
   <script>
-    // 現在年をフッターに反映
+    // サブタブ切り替え
+    const appTab = document.getElementById('subtab-app');
+    const jsonTab = document.getElementById('subtab-json');
+    const appSection = document.getElementById('app-section');
+    const jsonSection = document.getElementById('json-section');
+    appTab.addEventListener('click', () => {
+      appTab.classList.add('active');
+      jsonTab.classList.remove('active');
+      appSection.style.display = '';
+      jsonSection.style.display = 'none';
+    });
+    jsonTab.addEventListener('click', () => {
+      appTab.classList.remove('active');
+      jsonTab.classList.add('active');
+      appSection.style.display = 'none';
+      jsonSection.style.display = '';
+      // JSON表示（例: aosai.json）
+      fetch('aosai.json')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('json-viewer').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(() => {
+          document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
+        });
+    });
+
+    // 既存のJS（年表示・メニュー・進捗バー色）
     document.getElementById('year').textContent = new Date().getFullYear();
-    // モバイルメニュー簡易開閉
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
     toggle.addEventListener('click', () => {
@@ -165,8 +205,6 @@
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open');
     });
-
-    // 進捗率の文字色をバー色と同じにする
     document.querySelectorAll('.percent-value').forEach(function(span) {
       const percent = parseInt(span.dataset.percent, 10);
       let color = '';
