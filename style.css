@@ -91,6 +91,46 @@ body {
   font-size: 20px;
 }
 
+/* サブタブ PayPay風 */
+.sub-tabs {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto 0.6em auto;
+  border-bottom: 2px solid #eee;
+  background: #fff;
+  padding: 0 10px;
+}
+.subtab-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 1.18em;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 14px 0 10px 0;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.subtab-btn.active {
+  border-bottom: 3px solid var(--primary);
+  color: var(--accent);
+  background: #f8fff8;
+}
+@media (max-width: 700px) {
+  .sub-tabs {
+    gap: 10px;
+    padding: 0 3px;
+  }
+  .subtab-btn {
+    font-size: 1em;
+    padding: 10px 0 8px 0;
+  }
+}
+
 /* ヒーロー */
 .hero {
   padding: 48px 0;
