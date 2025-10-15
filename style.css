@@ -12,7 +12,6 @@
   --status-green: #e3fcec;
   --status-green-border: #43a047;
 
-  /* 追加: ボタン用カラー */
   --btn-normal-green: #316745;
   --btn-hover-black: #1b1b1f;
 }
@@ -170,36 +169,28 @@ body {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  /* 追加: transitionで色変化をなめらかに */
   transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
-
-/* 使い方・特徴ボタン（.btn-primary, .btn-outline）通常時は緑、フィードバックボタンは従来通り */
 .btn-primary,
 .btn-outline {
-  color: var(--btn-normal-green); /* 通常時緑色 */
+  color: var(--btn-normal-green);
 }
-
-/* 使い方・特徴ボタンのホバー・フォーカス・アクティブ時は黒色 */
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
-  color: var(--btn-hover-black); /* ホバー・クリック時黒色 */
-  background: rgba(49, 103, 69, 0.08); /* 従来のホバー背景 */
-  border-color: var(--primary); /* 従来のホバー枠 */
+  color: var(--btn-hover-black);
+  background: rgba(49, 103, 69, 0.08);
+  border-color: var(--primary);
 }
-
-/* フィードバックボタンは色変更しない（従来通り） */
 .btn-feedback {
   border: 2px solid rgba(0, 0, 0, 0.06);
   color: var(--text);
   background: rgba(49, 103, 69, 0.08);
   margin-left: 10px;
 }
-
 .btn-feedback:hover,
 .btn-feedback:focus,
 .btn-feedback:active {
@@ -207,7 +198,6 @@ body {
   color: var(--primary);
   border-color: var(--primary);
 }
-
 .hero-visual {
   flex: 0 0 auto;
   display: flex;
@@ -253,8 +243,6 @@ body {
   }
 }
 
-/* ダウンロードバナー（インラインstyleのみ） */
-
 /* 主な特徴カード */
 .features {
   padding: 36px 0;
@@ -295,7 +283,6 @@ body {
   align-items: flex-start;
   transition: border-color 0.2s, background 0.2s;
 }
-
 .status-card .status-title {
   font-size: 1.13em;
   font-weight: 700;
@@ -306,20 +293,16 @@ body {
   font-weight: 600;
   letter-spacing: 0.03em;
 }
-
-/* 赤色（進行中・設計中・これから） */
 .status-card.status-pending {
   background: var(--status-red);
   border-left-color: var(--status-red-border);
   color: #b71c1c;
 }
-/* 緑色（完了・実施中） */
 .status-card.status-done {
   background: var(--status-green);
   border-left-color: var(--status-green-border);
   color: #256029;
 }
-
 @media (max-width: 700px) {
   .status-cards {
     grid-template-columns: 1fr;
@@ -327,7 +310,7 @@ body {
   }
 }
 
-/* サイトフッター */
+/* サイトフッター（横並び・折り返し防止） */
 .site-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding: 18px 0;
@@ -337,6 +320,44 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap; /* 折り返し禁止 */
+  gap: 10px;
+  min-width: 0;
+}
+.footer-left,
+.footer-center,
+.footer-right {
+  min-width: 0;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+}
+.footer-center {
+  justify-content: center;
+  flex: 1;
+}
+
+/* 画面が狭い場合も横並び維持＆縮小 */
+@media (max-width: 600px) {
+  .footer-inner {
+    gap: 4px;
+  }
+  .footer-left small,
+  .footer-right a,
+  .btn-feedback,
+  .footer-center a {
+    font-size: 0.92em;
+    padding: 6px 4px;
+    min-width: 0;
+    max-width: 100vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .btn-feedback {
+    min-width: 70px;
+    padding: 6px 4px;
+  }
 }
 
 /* メンバー紹介 */
@@ -404,15 +425,12 @@ body {
     font-size: 1.2em;
   }
 }
-
-/* ナビゲーションのレスポンシブ調整 */
 @media (max-width: 800px) {
   .global-nav .nav-item {
     font-size: 13px;
     padding: 6px 6px;
   }
 }
-
 @media (max-width: 800px) {
   .hero-ctas {
     display: flex;
@@ -431,6 +449,7 @@ body {
     box-sizing: border-box;
   }
 }
+
 /* ====== 開発状況プログレスバー ====== */
 .progress-list {
   display: grid;
@@ -472,7 +491,6 @@ body {
 }
 .progress-bar-remaining {
   height: 100%;
-  /* グラデーションの向きを左右逆に変更（右→左） */
   background: linear-gradient(270deg, #ffebee 0%, #e53935 100%);
   border-radius: 0 8px 8px 0;
   transition: width 0.5s;
@@ -486,7 +504,6 @@ body {
   width: 100%;
 }
 .percent-value {
-  /* JSで色付けするのでCSSでは指定しない */
 }
 @media (max-width: 700px) {
   .progress-list {
