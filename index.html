@@ -49,7 +49,7 @@
 
             <div class="hero-ctas">
               <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">使い方を見る</a>
-              <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">特徴を見る</a>
+              <a class="btn btn-feedback" href="#features" id="features-btn">特徴を見る</a>
             </div>
           </div>
           <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
@@ -65,7 +65,7 @@
             <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
           </div>
         </div>
-        <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:12px 36px; border-radius:16px; margin-top:8px; text-decoration:none;">
+        <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:10px 28px; border-radius:10px; margin-top:8px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12);">
           iOS版をダウンロード
         </a>
         <div style="margin-top:10px; font-size:0.98em; color:#888;">
@@ -73,7 +73,7 @@
         </div>
       </div>
 
-      <section class="features container">
+      <section class="features container" id="features">
         <h2 class="section-title">主な特徴</h2>
         <div class="cards">
           <article class="card">
@@ -194,6 +194,12 @@
         .catch(() => {
           document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
         });
+    });
+
+    // 「特徴を見る」ボタンで主な特徴へスクロール
+    document.getElementById('features-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
     });
 
     // 既存のJS（年表示・メニュー・進捗バー色）
