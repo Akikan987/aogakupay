@@ -460,7 +460,7 @@ body {
 .progress-item {
   background: var(--card);
   border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(17,24,39,0.12);
+  box-shadow: 0 2px 8px rgba(17,24,39,0.06);
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
@@ -481,6 +481,7 @@ body {
   overflow: hidden;
   position: relative;
   display: flex;
+  border: 2px solid #d1d5db;
 }
 .progress-bar {
   height: 100%;
@@ -491,7 +492,7 @@ body {
 }
 .progress-bar-remaining {
   height: 100%;
-  background: linear-gradient(270deg, #ffebee 0%, #e53935 100%);
+  background: transparent;
   border-radius: 0 8px 8px 0;
   transition: width 0.5s;
   z-index: 0;
