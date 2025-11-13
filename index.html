@@ -178,52 +178,65 @@
       </div>
     </div>
   </footer>
-  
   <script>
     // サブタブ切り替え
     const appTab = document.getElementById('subtab-app');
     const jsonTab = document.getElementById('subtab-json');
     const appSection = document.getElementById('app-section');
     const jsonSection = document.getElementById('json-section');
-    appTab.addEventListener('click', () => {
-      appTab.classList.add('active');
-      jsonTab.classList.remove('active');
-      appSection.style.display = '';
-      jsonSection.style.display = 'none';
-    });
-    jsonTab.addEventListener('click', () => {
-      appTab.classList.remove('active');
-      jsonTab.classList.add('active');
-      appSection.style.display = 'none';
-      jsonSection.style.display = '';
-      // JSON表示（例: aosai.json）
-      fetch('aosai.json')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('json-viewer').textContent = JSON.stringify(data, null, 2);
-        })
-        .catch(() => {
-          document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
-        });
-    });
+
+    if (appTab && jsonTab && appSection && jsonSection) {
+      appTab.addEventListener('click', () => {
+        appTab.classList.add('active');
+        jsonTab.classList.remove('active');
+        appSection.style.display = '';
+        jsonSection.style.display = 'none';
+      });
+      jsonTab.addEventListener('click', () => {
+        appTab.classList.remove('active');
+        jsonTab.classList.add('active');
+        appSection.style.display = 'none';
+        jsonSection.style.display = '';
+        // JSON表示（例: aosai.json）
+        fetch('aosai.json')
+          .then(res => {
+            if (!res.ok) throw new Error('network');
+            return res.json();
+          })
+          .then(data => {
+            document.getElementById('json-viewer').textContent = JSON.stringify(data, null, 2);
+          })
+          .catch(() => {
+            document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
+          });
+      });
+    }
 
     // 「特徴を見る」ボタンで主な特徴へスクロール
-    document.getElementById('features-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-    });
+    const featuresBtn = document.getElementById('features-btn');
+    if (featuresBtn) {
+      featuresBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const el = document.getElementById('features');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
 
-    // 既存のJS（年表示・メニュー・進捗バー色）
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
+
     document.querySelectorAll('.percent-value').forEach(function(span) {
-      const percent = parseInt(span.dataset.percent, 10);
+      const percent = parseInt(span.dataset.percent, 10) || 0;
       let color = '';
       if (percent >= 70) {
         color = getComputedStyle(document.documentElement).getPropertyValue('--primary');
