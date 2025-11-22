@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,13 +8,22 @@
     gtag('js', new Date());
     gtag('config', 'G-MDT84GPYB3');
   </script>
-  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AogakuPay</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="consent-banner" role="status" aria-live="polite"
+       style="position:fixed;left:16px;right:16px;bottom:16px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.12);padding:12px 16px;display:flex;gap:12px;align-items:center;z-index:10000;max-width:980px;margin:0 auto;">
+    <div style="flex:1;font-size:0.95em;color:#222;">
+      このサイトはサイト改善のために Google Analytics を利用しています。デフォルトで解析は有効になっています。詳しくは
+      <a href="terms.html" style="color:#3f729b;text-decoration:underline;">プライバシーポリシー</a>をご確認ください。
+    </div>
+    <button id="consent-close" aria-label="通知を閉じる" style="background:transparent;border:0;font-size:1.2em;line-height:1;cursor:pointer;padding:6px 8px;">✕</button>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
@@ -57,6 +65,7 @@
           </div>
         </div>
       </section>
+
       <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
         <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
           <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
@@ -153,6 +162,7 @@
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -174,45 +184,59 @@
     const jsonTab = document.getElementById('subtab-json');
     const appSection = document.getElementById('app-section');
     const jsonSection = document.getElementById('json-section');
-    appTab.addEventListener('click', () => {
-      appTab.classList.add('active');
-      jsonTab.classList.remove('active');
-      appSection.style.display = '';
-      jsonSection.style.display = 'none';
-    });
-    jsonTab.addEventListener('click', () => {
-      appTab.classList.remove('active');
-      jsonTab.classList.add('active');
-      appSection.style.display = 'none';
-      jsonSection.style.display = '';
-      // JSON表示（例: aosai.json）
-      fetch('aosai.json')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('json-viewer').textContent = JSON.stringify(data, null, 2);
-        })
-        .catch(() => {
-          document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
-        });
-    });
+
+    if (appTab && jsonTab && appSection && jsonSection) {
+      appTab.addEventListener('click', () => {
+        appTab.classList.add('active');
+        jsonTab.classList.remove('active');
+        appSection.style.display = '';
+        jsonSection.style.display = 'none';
+      });
+      jsonTab.addEventListener('click', () => {
+        appTab.classList.remove('active');
+        jsonTab.classList.add('active');
+        appSection.style.display = 'none';
+        jsonSection.style.display = '';
+        // JSON表示（例: aosai.json）
+        fetch('aosai.json')
+          .then(res => {
+            if (!res.ok) throw new Error('network');
+            return res.json();
+          })
+          .then(data => {
+            document.getElementById('json-viewer').textContent = JSON.stringify(data, null, 2);
+          })
+          .catch(() => {
+            document.getElementById('json-viewer').textContent = "団体データを読み込めませんでした";
+          });
+      });
+    }
 
     // 「特徴を見る」ボタンで主な特徴へスクロール
-    document.getElementById('features-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-    });
+    const featuresBtn = document.getElementById('features-btn');
+    if (featuresBtn) {
+      featuresBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const el = document.getElementById('features');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
 
-    // 既存のJS（年表示・メニュー・進捗バー色）
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
+
     document.querySelectorAll('.percent-value').forEach(function(span) {
-      const percent = parseInt(span.dataset.percent, 10);
+      const percent = parseInt(span.dataset.percent, 10) || 0;
       let color = '';
       if (percent >= 70) {
         color = getComputedStyle(document.documentElement).getPropertyValue('--primary');
