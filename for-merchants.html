@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MDT84GPYB3');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>加盟を検討中の方へ | AogakuPay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img class="logo-mark" src="photoes/app_icon.png" alt="青学ペイ ロゴ">
+        <span class="logo-text">青学ペイ</span>
+      </a>
+      <nav class="global-nav" aria-label="メインナビゲーション">
+        <a href="index.html" class="nav-item">ホーム</a>
+        <a href="for-merchants.html" class="nav-item active">加盟を検討中の方へ</a>
+        <a href="for-staff.html" class="nav-item">教職員の方へ</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-label="メニュー">☰</button>
+    </div>
+  </header>
+  <nav class="sub-tabs container" aria-label="サブナビゲーション">
+    <a href="for-merchants.html" class="subtab-btn active">加盟への流れ</a>
+    <a href="benefits.html" class="subtab-btn">メリット</a>
+    <a href="merchant-faq.html" class="subtab-btn">よくある質問</a>
+  </nav>
+  <main>
+    <section class="container" style="padding-top:40px;">
+      <h1>加盟への流れ</h1>
+      <p>青学ペイへの加盟をご検討いただきありがとうございます。以下のステップで簡単に加盟いただけます。</p>
+      
+      <div class="cards" style="margin-top: 2em;">
+        <article class="card">
+          <h3>STEP 1: お問い合わせ</h3>
+          <p>まずはお問い合わせフォームよりご連絡ください。担当者より折り返しご連絡いたします。</p>
+        </article>
+        <article class="card">
+          <h3>STEP 2: ご説明・ご相談</h3>
+          <p>青学ペイの仕組みやメリットについて詳しくご説明いたします。ご不明点はお気軽にご質問ください。</p>
+        </article>
+        <article class="card">
+          <h3>STEP 3: 加盟手続き</h3>
+          <p>必要書類のご提出と登録手続きを行います。手続き完了後、すぐにご利用いただけます。</p>
+        </article>
+      </div>
+
+      <div style="text-align:center; margin-top:3em;">
+        <a href="https://forms.gle/uufPVv7yxR5w3acG6" class="btn btn-feedback" style="font-size:1.1em; padding:12px 32px;">
+          お問い合わせはこちら
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <small>&copy; <span id="year"></span> Azul</small>
+      </div>
+      <div class="footer-center">
+        <a href="https://forms.gle/uufPVv7yxR5w3acG6" style="font-size:1em; color:#3f729b; text-decoration:none;">フィードバックを送る</a>
+      </div>
+      <div class="footer-right">
+        <a href="terms.html" style="font-size:1em; color:#3f729b; text-decoration:none;">
+          利用規約・プライバシーポリシー
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.global-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
