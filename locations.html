@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MDT84GPYB3');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>利用できる場所 | AogakuPay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img class="logo-mark" src="photoes/app_icon.png" alt="青学ペイ ロゴ">
+        <span class="logo-text">青学ペイ</span>
+      </a>
+      <nav class="global-nav" aria-label="メインナビゲーション">
+        <a href="index.html" class="nav-item active">ホーム</a>
+        <a href="for-merchants.html" class="nav-item">加盟を検討中の方へ</a>
+        <a href="for-staff.html" class="nav-item">教職員の方へ</a>
+      </nav>
+      <button class="menu-toggle" aria-expanded="false" aria-label="メニュー">☰</button>
+    </div>
+  </header>
+  <nav class="sub-tabs container" aria-label="サブナビゲーション">
+    <a href="index.html" class="subtab-btn">アプリ紹介</a>
+    <a href="usage.html" class="subtab-btn">使い方</a>
+    <a href="locations.html" class="subtab-btn active">利用できる場所</a>
+    <a href="faq.html" class="subtab-btn">よくある質問</a>
+  </nav>
+  <main>
+    <section class="container" style="padding-top:40px;">
+      <h1>利用できる場所</h1>
+      <p>青学ペイは以下の場所でご利用いただけます。</p>
+      
+      <div class="cards" style="margin-top: 2em;">
+        <article class="card">
+          <h3>青山祭会場</h3>
+          <p>青山祭期間中、会場内の加盟店舗でご利用いただけます。</p>
+        </article>
+        <article class="card">
+          <h3>学内店舗（準備中）</h3>
+          <p>今後、学内の様々な店舗でのご利用を予定しています。</p>
+        </article>
+        <article class="card">
+          <h3>自動販売機（準備中）</h3>
+          <p>学内自動販売機への対応も検討中です。</p>
+        </article>
+      </div>
+
+      <p style="margin-top:2em; color:#666;">
+        ※利用可能な場所は随時拡大予定です。最新情報は公式Instagramをご確認ください。
+      </p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <small>&copy; <span id="year"></span> Azul</small>
+      </div>
+      <div class="footer-center">
+        <a href="https://forms.gle/uufPVv7yxR5w3acG6" style="font-size:1em; color:#3f729b; text-decoration:none;">フィードバックを送る</a>
+      </div>
+      <div class="footer-right">
+        <a href="terms.html" style="font-size:1em; color:#3f729b; text-decoration:none;">
+          利用規約・プライバシーポリシー
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.global-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

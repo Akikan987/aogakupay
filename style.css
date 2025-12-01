@@ -113,6 +113,10 @@ body {
   margin-bottom: -2px;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.subtab-btn:hover {
+  color: var(--accent);
 }
 .subtab-btn.active {
   border-bottom: 3px solid var(--primary);
