@@ -171,6 +171,20 @@
         }
       });
     });
+
+    // URLハッシュに基づいて特定のセクションを開く
+    window.addEventListener('DOMContentLoaded', function() {
+      const hash = window.location.hash;
+      if (hash === '#section-0') {
+        const firstCollapsible = document.querySelector('.collapsible');
+        if (firstCollapsible) {
+          firstCollapsible.classList.add('active');
+          firstCollapsible.nextElementSibling.style.display = 'block';
+          // スクロールして該当セクションを表示
+          firstCollapsible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
   </script>
 </body>
 </html>
