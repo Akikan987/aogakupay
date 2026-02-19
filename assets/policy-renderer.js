@@ -40,6 +40,8 @@
     });
     root.appendChild(termsBody);
 
+    root.appendChild(createEl("hr", "policy-separator"));
+
     var privacyTitle = createEl("h2", "", data.privacyTitle);
     root.appendChild(privacyTitle);
     var privacyBody = createEl("div", "policy-body");
@@ -48,6 +50,24 @@
       appendSectionBody(section, privacyBody);
     });
     root.appendChild(privacyBody);
+  }
+
+  function renderAppPolicy(data, root) {
+    var termsTitle = createEl("h1", "", data.termsTitle);
+    root.appendChild(termsTitle);
+    data.termsSections.forEach(function (section) {
+      root.appendChild(createEl("h2", "", section.title));
+      appendSectionBody(section, root);
+    });
+
+    root.appendChild(createEl("hr", "policy-separator"));
+
+    var privacyTitle = createEl("h1", "", data.privacyTitle);
+    root.appendChild(privacyTitle);
+    data.privacySections.forEach(function (section) {
+      root.appendChild(createEl("h2", "", section.title));
+      appendSectionBody(section, root);
+    });
   }
 
   function renderCompactPolicy(data, root) {
@@ -103,6 +123,10 @@
 
     if (mode === "compact") {
       renderCompactPolicy(data, root);
+      return;
+    }
+    if (mode === "app") {
+      renderAppPolicy(data, root);
       return;
     }
     renderFullPolicy(data, root);

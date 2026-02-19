@@ -5,46 +5,50 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>アプリ向け利用規約 | AogakuPay</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 16px;
+      background: #fff;
+      color: #000;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    p, li {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 0;
+    }
+    .policy-separator {
+      margin: 40px 0;
+      border: 0;
+      border-top: 1px solid #d1d5db;
+    }
+  </style>
 </head>
 <body>
-  <pre id="policy-text"></pre>
+  <div id="policy-root"></div>
   <script src="assets/policy-data.js"></script>
+  <script src="assets/policy-renderer.js"></script>
   <script>
-    (function () {
-      var data = window.AOGAKU_POLICY_DATA;
-      var lines = [];
-      if (!data) return;
-
-      lines.push("最終更新日: " + data.updatedAt);
-      lines.push("");
-      lines.push(data.termsTitle);
-      lines.push("");
-      data.termsSections.forEach(function (section) {
-        lines.push(section.title);
-        (section.paragraphs || []).forEach(function (paragraph) {
-          lines.push(paragraph);
-        });
-        (section.list || []).forEach(function (item) {
-          lines.push("・" + item);
-        });
-        lines.push("");
-      });
-
-      lines.push(data.privacyTitle);
-      lines.push("");
-      data.privacySections.forEach(function (section) {
-        lines.push(section.title);
-        (section.paragraphs || []).forEach(function (paragraph) {
-          lines.push(paragraph);
-        });
-        (section.list || []).forEach(function (item) {
-          lines.push("・" + item);
-        });
-        lines.push("");
-      });
-
-      document.getElementById("policy-text").textContent = lines.join("\n");
-    })();
+    renderAogakuPolicy({ mode: "app", mountId: "policy-root" });
   </script>
 </body>
 </html>

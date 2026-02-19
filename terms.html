@@ -15,31 +15,50 @@
   <title>利用規約・プライバシーポリシー | AogakuPay</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .policy-body {
-      padding-left: 30px;
-    }
     .policy-meta {
       color: #6b7280;
       font-size: 0.95rem;
-      margin: 0 0 16px;
+      margin: 0 0 18px;
     }
-    .policy-compact-list {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 20px;
+    #policy-root {
+      max-width: 920px;
     }
-    .policy-compact-item {
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 12px;
+    #policy-root h2 {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .policy-body {
+      padding-left: 0;
       background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
     }
-    .policy-compact-item h3 {
+    .policy-body h3 {
       margin: 0 0 8px;
-      font-size: 1rem;
+      color: var(--primary);
+      font-size: 1.05rem;
     }
-    .policy-compact-item p {
-      margin: 0;
+    .policy-body h3:not(:first-child) {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .policy-body p {
+      margin: 0 0 10px;
+      line-height: 1.75;
+    }
+    .policy-body ul {
+      margin: 6px 0 10px;
+      padding-left: 20px;
+    }
+    .policy-separator {
+      margin: 26px 0;
+      border: 0;
+      border-top: 1px solid #d1d5db;
     }
   </style>
 </head>
