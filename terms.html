@@ -37,8 +37,9 @@
     </div>
   </header>
   <main>
-    <section class="container" style="padding-top:40px;">
+    <section class="container page-section-top">
       <h1>利用規約・プライバシーポリシー</h1>
+      <p class="section-lead">青学ペイのご利用前に、以下の内容をご確認ください。</p>
       <h2>青学ペイ 利用規約</h2>
       <div class="policy-body">
         <h3>第1条（目的）</h3>
@@ -119,7 +120,13 @@
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // 必要ならmenu-toggle用のJSもコピー
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.global-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
   </script>
 </body>
 </html>

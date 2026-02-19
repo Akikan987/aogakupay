@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDT84GPYB3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,7 +8,6 @@
     gtag('js', new Date());
     gtag('config', 'G-MDT84GPYB3');
   </script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AogakuPay</title>
@@ -45,50 +43,89 @@
           <div class="hero-content">
             <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
             <p class="lead">
-              青学ペイは学内で使える簡単・安全な決済アプリ<br>
-              のプロトタイプです。
-              <br>現在の実装状況やこれからのロードマップ<br>をこちらでご紹介しています。</p>
-
+              青学ペイは学内で使える簡単・安全な決済アプリのプロトタイプです。<br>
+              使い方、利用場所、開発状況をこのサイトで確認できます。
+            </p>
             <div class="hero-ctas">
-              <a class="btn btn-feedback" href="usage.html" target="_blank" rel="noopener noreferrer">使い方を見る</a>
-              <a class="btn btn-feedback" href="#features" id="features-btn">特徴を見る</a>
+              <a class="btn btn-solid" href="#download">今すぐはじめる</a>
+              <a class="btn btn-feedback" href="usage.html">使い方を見る</a>
+              <a class="btn btn-feedback" href="for-merchants.html">加盟店向け情報</a>
             </div>
           </div>
-          <div class="hero-visual" aria-hidden="true" style="align-items: flex-start;">
-            <img class="hero-phone" src="assets/qr-hero.png" alt="" style="object-fit: contain; object-position: top; display: block;">
+          <div class="hero-visual" aria-hidden="true">
+            <img class="hero-phone" src="assets/qr-hero.png" alt="">
           </div>
         </div>
       </section>
-      <div style="background:#d3d3d3; text-align:center; padding:32px 0 24px 0; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom: 2em;">
-        <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:16px;">
-          <img src="photoes/app_icon.png" alt="青学ペイロゴ" style="width:56px;height:56px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.15); background:#f5f5f5;">
-          <div style="font-size:1.35em; font-weight:700; color:#1b1b1f; text-align:left;">
-            いますぐ<br>
-            <span style="color:#316745;">青学ペイ</span>アプリをダウンロード
+
+      <section class="download-banner" id="download">
+        <div class="download-banner-inner">
+          <div class="download-heading">
+            <img src="photoes/app_icon.png" alt="青学ペイロゴ" class="download-logo">
+            <div class="download-text">
+              いますぐ<br>
+              <span class="download-app">青学ペイ</span>アプリをダウンロード
+            </div>
           </div>
+          <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" class="download-main-btn">
+            iOS版をダウンロード
+          </a>
+          <div class="download-meta">※iOSのみ対応／App Storeには未公開</div>
+          <div class="download-sub">Android版は現在開発中</div>
         </div>
-        <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#24292f; color:#ffff; font-weight:700; font-size:1.1em; padding:10px 28px; border-radius:10px; margin-top:8px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.12);">
-          iOS版をダウンロード
-        </a>
-        <div style="margin-top:10px; font-size:0.98em; color:#888;">
-          ※iOSのみ対応／App Storeには未公開
+      </section>
+
+      <section class="container audience">
+        <h2 class="section-title">目的別に見る</h2>
+        <p class="section-lead">あなたの立場に合わせて、必要な情報へすぐ移動できます。</p>
+        <div class="audience-grid">
+          <a class="target-card" href="usage.html">
+            <span class="card-kicker">利用者向け</span>
+            <h3>はじめて使う方へ</h3>
+            <p>最初の設定から支払い完了まで、必要な手順を順番に確認できます。</p>
+            <ul class="card-list">
+              <li>TestFlight導入</li>
+              <li>会員登録</li>
+              <li>チャージと支払い</li>
+            </ul>
+          </a>
+          <a class="target-card" href="for-merchants.html">
+            <span class="card-kicker">加盟店向け</span>
+            <h3>加盟を検討中の方へ</h3>
+            <p>導入前に確認すべきポイントと、運用開始までの流れをまとめています。</p>
+            <ul class="card-list">
+              <li>加盟までの手順</li>
+              <li>導入メリット</li>
+              <li>加盟店向けFAQ</li>
+            </ul>
+          </a>
+          <a class="target-card" href="for-staff.html">
+            <span class="card-kicker">教職員向け</span>
+            <h3>教職員の方へ</h3>
+            <p>学内運用での想定ユースケースと、導入時の確認事項を掲載しています。</p>
+            <ul class="card-list">
+              <li>活用シーン</li>
+              <li>運用上の注意点</li>
+              <li>連携先の確認</li>
+            </ul>
+          </a>
         </div>
-      </div>
+      </section>
 
       <section class="features container" id="features">
         <h2 class="section-title">主な特徴</h2>
         <div class="cards">
           <article class="card">
             <h3>簡単な操作</h3>
-            <p>QRコード読み取りやワンタップでの支払いに対応。直感的なUIで誰でも使えます。</p>
+            <p>QRコードの読み取りとワンタップ中心の操作で、初めてでも使いやすい設計です。</p>
           </article>
           <article class="card">
             <h3>学内向けの設計</h3>
-            <p>学生証や購買データと連携し、学内の利用に最適化された機能を提供します。</p>
+            <p>学内利用を前提に、現場運用に必要な導線と情報表示を優先しています。</p>
           </article>
           <article class="card">
-            <h3>安全性</h3>
-            <p>認証・暗号化など基本的なセキュリティ設計を取り入れています（開発中）。</p>
+            <h3>段階的な安全性強化</h3>
+            <p>認証、通信保護、運用フローの整備を段階的に進めています。</p>
           </article>
         </div>
       </section>
@@ -97,7 +134,7 @@
         <h2 class="section-title">現在の開発状況</h2>
         <div class="progress-list">
           <div class="progress-item">
-            <div class="progress-label">UI デザイン</div>
+            <div class="progress-label">UIデザイン</div>
             <div class="progress-container">
               <div class="progress-bar" style="width: 70%;"></div>
               <div class="progress-bar-remaining" style="width: 30%;"></div>
@@ -105,7 +142,7 @@
             <div class="progress-percent">進捗: <span class="percent-value" data-percent="70">70%</span></div>
           </div>
           <div class="progress-item">
-            <div class="progress-label">QR 決済連携</div>
+            <div class="progress-label">QR決済連携</div>
             <div class="progress-container">
               <div class="progress-bar" style="width: 40%;"></div>
               <div class="progress-bar-remaining" style="width: 60%;"></div>
@@ -121,7 +158,7 @@
             <div class="progress-percent">進捗: <span class="percent-value" data-percent="0">0%</span></div>
           </div>
           <div class="progress-item">
-            <div class="progress-label">青学ペイ for Android</div>
+            <div class="progress-label">Android対応</div>
             <div class="progress-container">
               <div class="progress-bar" style="width: 10%;"></div>
               <div class="progress-bar-remaining" style="width: 90%;"></div>
@@ -131,55 +168,41 @@
         </div>
       </section>
 
+      <section class="trust container">
+        <h2 class="section-title">安心して使うための取り組み</h2>
+        <p class="section-lead">「誰が」「どこで」「どう使ったか」を確認できる運用を意識して設計しています。</p>
+        <div class="trust-grid">
+          <article class="trust-card">
+            <span class="card-kicker">運用管理</span>
+            <h3>アクセス管理</h3>
+            <p>学内利用を前提にアカウント管理を行い、なりすましリスクを抑えます。</p>
+          </article>
+          <article class="trust-card">
+            <span class="card-kicker">誤操作防止</span>
+            <h3>取引確認</h3>
+            <p>支払い前後で金額や履歴を確認しやすい表示を採用しています。</p>
+          </article>
+          <article class="trust-card">
+            <span class="card-kicker">サポート</span>
+            <h3>問い合わせ導線</h3>
+            <p>問題発生時の連絡先と利用ルールを公開し、対応フローを明確化しています。</p>
+          </article>
+        </div>
+        <p class="trust-link">
+          詳細は <a class="utility-link" href="terms.html">利用規約・プライバシーポリシー</a> をご確認ください。
+        </p>
+      </section>
+
       <section class="instagram-feed container">
         <h2 class="section-title">公式Instagram</h2>
-        
-        <div style="display: flex; justify-content: center; margin-bottom: 24px;">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/aogaku.pay/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-            <div style="padding:16px;">
-              <a href="https://www.instagram.com/aogaku.pay/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                <div style="display: flex; flex-direction: row; align-items: center;">
-                  <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                    <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                    <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                  </div>
-                </div>
-                <div style="padding: 19% 0;"></div>
-                <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                  <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                        <g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g>
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-                <div style="padding-top: 8px;">
-                  <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div>
-                </div>
-                <div style="padding: 12.5% 0;"></div>
-              </a>
-              <p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                <a href="https://www.instagram.com/aogaku.pay/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank">青学ペイ(@aogaku.pay)</a>がシェアした投稿
-              </p>
-            </div>
-          </blockquote>
-        </div>
-        
-        <script async src="//www.instagram.com/embed.js"></script>
-        
-        <div style="text-align:center; margin-top:24px;">
-          <a href="https://www.instagram.com/aogaku.pay/" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             style="display:inline-block; background:#E4405F; color:white; padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:700; font-size:1.1em; box-shadow: 0 4px 12px rgba(228,64,95,0.3);">
-            📷 すべての投稿を見る
-          </a>
+        <p>リリース情報、利用可能店舗、開発状況は公式Instagramで告知しています。</p>
+        <div class="instagram-actions">
+          <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer" class="btn-instagram">Instagramを見る</a>
         </div>
       </section>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
@@ -193,14 +216,8 @@
       </div>
     </div>
   </footer>
-  <script>
-    // 「特徴を見る」ボタンで主な特徴へスクロール
-    document.getElementById('features-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-    });
 
-    // 既存のJS（年表示・メニュー・進捗バー色）
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');

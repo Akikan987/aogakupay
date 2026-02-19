@@ -14,20 +14,9 @@
   <title>よくある質問 | AogakuPay</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .faq-item {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1.5em;
-      margin-bottom: 1em;
-    }
-    .faq-question {
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5em;
-    }
-    .faq-answer {
-      color: #333;
-    }
+    .faq-item { background: #f8f9fa; border-radius: 8px; padding: 1.5em; margin-bottom: 1em; }
+    .faq-question { font-weight: 700; color: var(--primary); margin-bottom: 0.5em; }
+    .faq-answer { color: #333; }
   </style>
 </head>
 <body>
@@ -52,36 +41,46 @@
     <a href="faq.html" class="subtab-btn active">よくある質問</a>
   </nav>
   <main>
-    <section class="container" style="padding-top:40px;">
+    <section class="container page-section-top">
       <h1>よくある質問</h1>
-      
-      <div class="faq-item">
+
+      <div class="faq-toolbar" aria-label="FAQ検索">
+        <input type="search" class="faq-search" id="faq-search" placeholder="質問を検索（例: Android, チャージ, 払い戻し）" aria-label="質問を検索">
+        <div class="faq-categories" role="tablist" aria-label="カテゴリ">
+          <button type="button" class="faq-chip active" data-category="all">すべて</button>
+          <button type="button" class="faq-chip" data-category="install">インストール</button>
+          <button type="button" class="faq-chip" data-category="payment">支払い・チャージ</button>
+          <button type="button" class="faq-chip" data-category="policy">規約・安全性</button>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="install">
         <div class="faq-question">Q. 青学ペイはどこでダウンロードできますか？</div>
         <div class="faq-answer">A. 現在はTestFlightを通じてiOS版のみ提供しています。ホームページのダウンロードリンクからインストールできます。</div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item" data-category="install">
         <div class="faq-question">Q. Android版はありますか？</div>
         <div class="faq-answer">A. 現在開発中です。リリース時期については公式Instagramでお知らせします。</div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item" data-category="payment">
         <div class="faq-question">Q. チャージはどうやってできますか？</div>
         <div class="faq-answer">A. 学内の所定窓口にて現金またはプリペイドカードでチャージできます。詳しくは「使い方」ページをご確認ください。</div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item" data-category="policy">
         <div class="faq-question">Q. 残高の払い戻しはできますか？</div>
         <div class="faq-answer">A. 申し訳ございませんが、チャージ残高の払い戻しは行っておりません。詳しくは利用規約をご確認ください。</div>
       </div>
 
-      <div class="faq-item">
+      <div class="faq-item" data-category="policy">
         <div class="faq-question">Q. セキュリティは大丈夫ですか？</div>
         <div class="faq-answer">A. 認証・暗号化など基本的なセキュリティ対策を施しています。ただし、現在開発中のため、一部機能は限定的です。</div>
       </div>
 
-      <p style="margin-top:2em; text-align:center;">
-        その他のご質問は<a href="https://forms.gle/uufPVv7yxR5w3acG6" style="color:#3f729b;">こちら</a>からお問い合わせください。
+      <p style="margin-top:2em;">
+        その他のご質問は<a href="https://forms.gle/uufPVv7yxR5w3acG6" class="utility-link">こちら</a>からお問い合わせください。
       </p>
     </section>
   </main>
@@ -107,6 +106,32 @@
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open');
     });
+
+    const searchInput = document.getElementById('faq-search');
+    const chips = Array.from(document.querySelectorAll('.faq-chip'));
+    const items = Array.from(document.querySelectorAll('.faq-item'));
+    let activeCategory = 'all';
+
+    function applyFilter() {
+      const term = searchInput.value.trim().toLowerCase();
+      items.forEach((item) => {
+        const category = item.dataset.category || '';
+        const text = item.textContent.toLowerCase();
+        const categoryMatch = activeCategory === 'all' || category === activeCategory;
+        const keywordMatch = term === '' || text.includes(term);
+        item.classList.toggle('hidden', !(categoryMatch && keywordMatch));
+      });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCategory = chip.dataset.category;
+        applyFilter();
+      });
+    });
+    searchInput.addEventListener('input', applyFilter);
   </script>
 </body>
 </html>

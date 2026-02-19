@@ -48,6 +48,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 14px 0;
+  position: relative;
 }
 .logo {
   display: flex;
@@ -70,7 +71,7 @@ body {
   font-weight: 700;
 }
 .global-nav {
-  display: flex !important;
+  display: flex;
   gap: 18px;
 }
 .global-nav .nav-item {
@@ -83,11 +84,12 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 .menu-toggle {
-  display: none !important;
+  display: none;
   background: none;
   border: 0;
   color: #fff;
   font-size: 20px;
+  cursor: pointer;
 }
 
 /* サブタブ PayPay風 */
@@ -167,6 +169,9 @@ body {
   color: var(--muted);
   font-size: 18px;
 }
+.section-title {
+  margin: 0 0 14px;
+}
 .btn {
   display: inline-block;
   padding: 10px 16px;
@@ -174,6 +179,17 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+.btn-solid {
+  color: #fff;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+}
+.btn-solid:hover,
+.btn-solid:focus,
+.btn-solid:active {
+  background: #214f35;
+  border-color: #214f35;
 }
 .btn-primary,
 .btn-outline {
@@ -193,7 +209,6 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.06);
   color: var(--text);
   background: rgba(49, 103, 69, 0.08);
-  margin-left: 10px;
 }
 .btn-feedback:hover,
 .btn-feedback:focus,
@@ -224,6 +239,193 @@ body {
   object-position: top;
   display: block;
   margin-top: 0;
+}
+.page-section-top {
+  padding-top: 40px;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* ダウンロードバナー（旧デザインベース） */
+.download-banner {
+  background: #d3d3d3;
+  text-align: center;
+  padding: 32px 0 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 2em;
+}
+.download-banner-inner {
+  width: min(900px, 92%);
+  margin: 0 auto;
+}
+.download-heading {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  margin-bottom:16px;
+}
+.download-logo {
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  background:#f5f5f5;
+}
+.download-text {
+  font-size:1.35em;
+  font-weight:700;
+  color:#1b1b1f;
+  text-align:left;
+}
+.download-app {
+  color:#316745;
+}
+.download-main-btn {
+  display:inline-block;
+  background:#24292f;
+  color:#fff;
+  font-weight:700;
+  font-size:1.1em;
+  padding:10px 28px;
+  border-radius:10px;
+  margin-top:8px;
+  text-decoration:none;
+  box-shadow:0 2px 8px rgba(0,0,0,0.12);
+}
+.download-meta {
+  margin-top:10px;
+  font-size:0.95em;
+  color:#555;
+}
+.download-sub {
+  margin-top: 12px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #eceff1;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* 改良セクション */
+.audience,
+.trust {
+  padding: 14px 0 30px;
+}
+.section-lead {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.utility-link {
+  color: #2f6f45;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.audience-grid,
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+.target-card,
+.trust-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+}
+.target-card {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.target-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 28px rgba(17, 24, 39, 0.1);
+}
+.card-kicker {
+  display: inline-block;
+  background: #ecfdf3;
+  color: #166534;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+}
+.card-list {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+.trust-card {
+  border-top: 4px solid var(--accent);
+}
+.trust-link {
+  margin-top: 14px;
+}
+
+.instagram-feed {
+  padding: 8px 0 20px;
+}
+.instagram-actions {
+  margin-top: 14px;
+}
+.btn-instagram {
+  display: inline-block;
+  background:#E4405F;
+  color:white;
+  padding:14px 24px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(228,64,95,0.3);
+}
+
+/* FAQ filter */
+.faq-toolbar {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+.faq-search {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+}
+.faq-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.faq-chip {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.faq-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.faq-item.hidden {
+  display: none;
 }
 @media (min-width: 1280px) {
   .hero-phone {
@@ -434,9 +636,49 @@ body {
   }
 }
 @media (max-width: 800px) {
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 8px;
+  }
+  .global-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 24px rgba(17,24,39,0.2);
+    flex-direction: column;
+    width: min(300px, 92vw);
+    padding: 8px;
+    z-index: 20;
+  }
+  .global-nav.open {
+    display: flex;
+  }
   .global-nav .nav-item {
-    font-size: 13px;
-    padding: 6px 6px;
+    color: var(--text);
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .global-nav .nav-item.active {
+    background: #eef5f1;
+    color: var(--primary);
+  }
+  .download-heading {
+    gap: 14px;
+  }
+  .download-text {
+    font-size: 1.1em;
+  }
+  .download-main-btn {
+    width: 100%;
+    max-width: 340px;
   }
 }
 @media (max-width: 800px) {

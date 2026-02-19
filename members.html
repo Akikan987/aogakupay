@@ -27,11 +27,11 @@
         <a href="for-merchants.html" class="nav-item">加盟を検討中の方へ</a>
         <a href="for-staff.html" class="nav-item">教職員の方へ</a>
       </nav>
-      <!-- ハンバーガーメニュー削除 -->
+      <button class="menu-toggle" aria-expanded="false" aria-label="メニュー">☰</button>
     </div>
   </header>
   <main>
-    <section class="container">
+    <section class="container page-section-top">
       <div class="app-header">
         <img src="photoes/app_icon.png" alt="アプリアイコン" class="app-icon">
         <div>
@@ -39,13 +39,11 @@
             @青学ペイ公式Instagram
           </a>
         </div>
-      </div>    
-      <!-- チーム名 Azul を追加 -->
-      <div style="margin-bottom: 10px; text-align: left; font-size: 3.5em; font-weight: bold; color: #316745;">Azul</div>
-      <!-- Azulの紹介文 -->
-      <div style="text-align: center; margin-bottom: 30px; font-size: 1.1em; line-height: 1.6;">
-        Azulは青学ペイの運営をする青学生のチームです。年に一度の青学祭をより一層便利に、盛り上がるように誠心誠意がんばります！
       </div>
+      <h1>Azul</h1>
+      <p class="section-lead">
+        Azulは青学ペイを運営する青学生チームです。青山祭をより便利で楽しい体験にするため、開発と運用を行っています。
+      </p>
       <div class="members-intro">
         <div class="member-card">
           <img src="photoes/member1.jpg" alt="Member 1" class="member-photo">
@@ -88,9 +86,14 @@
     </div>
   </footer>
   <script>
-    // 現在年をフッターに反映
     document.getElementById('year').textContent = new Date().getFullYear();
-    // ハンバーガーメニューのスクリプト削除
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.global-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
   </script>
 </body>
 </html>
