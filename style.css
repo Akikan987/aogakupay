@@ -328,6 +328,26 @@ body {
   font-weight: 700;
   text-decoration: underline;
 }
+.reference-image-box {
+  margin: 16px 0 10px;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+}
+.reference-image-title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #374151;
+}
+.reference-image {
+  display: block;
+  width: min(100%, 200px);
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
 .audience-grid,
 .trust-grid {
   display: grid;
