@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>アプリ向け利用規約 | AogakuPay</title>
+</head>
+<body>
+  <pre id="policy-text"></pre>
+  <script src="assets/policy-data.js"></script>
+  <script>
+    (function () {
+      var data = window.AOGAKU_POLICY_DATA;
+      var lines = [];
+      if (!data) return;
+
+      lines.push("最終更新日: " + data.updatedAt);
+      lines.push("");
+      lines.push(data.termsTitle);
+      lines.push("");
+      data.termsSections.forEach(function (section) {
+        lines.push(section.title);
+        (section.paragraphs || []).forEach(function (paragraph) {
+          lines.push(paragraph);
+        });
+        (section.list || []).forEach(function (item) {
+          lines.push("・" + item);
+        });
+        lines.push("");
+      });
+
+      lines.push(data.privacyTitle);
+      lines.push("");
+      data.privacySections.forEach(function (section) {
+        lines.push(section.title);
+        (section.paragraphs || []).forEach(function (paragraph) {
+          lines.push(paragraph);
+        });
+        (section.list || []).forEach(function (item) {
+          lines.push("・" + item);
+        });
+        lines.push("");
+      });
+
+      document.getElementById("policy-text").textContent = lines.join("\n");
+    })();
+  </script>
+</body>
+</html>
