@@ -348,6 +348,37 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
 }
+.usage-step-note {
+  margin: 14px 0 8px;
+  color: #374151;
+  font-weight: 600;
+}
+.usage-shot-grid {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 8px;
+}
+.usage-shot-grid--two {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.usage-shot-card {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+}
+.usage-shot-card figcaption {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.usage-inline-trigger {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 700;
+}
 .audience-grid,
 .trust-grid {
   display: grid;

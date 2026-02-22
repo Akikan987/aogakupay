@@ -90,6 +90,7 @@
       <!-- 追加部分：使い方0 -->
       <button type="button" class="collapsible">0. アプリのインストール</button>
       <div class="content-collapsible">
+        <p class="usage-step-note">インストールは「TestFlightの導入」→「招待リンクから青学ペイを導入」の順で進めます。</p>
         <ul>
           <li>まずは <a href="https://apps.apple.com/jp/app/testflight/id899247664" target="_blank" rel="noopener noreferrer" class="utility-link">https://apps.apple.com/jp/app/testflight/id899247664</a>
             にアクセスもしくはappstoreでtestflightと検索してtestflightアプリをインストールします（テスト段階なためApp Storeで検索してもインストールできません）
@@ -101,38 +102,68 @@
             にアクセスして青学ペイアプリをインストールします。
           </li>
         </ul>
+        <div class="usage-shot-grid usage-shot-grid--two">
+          <figure class="usage-shot-card">
+            <img src="photoes/welcome.png" alt="アプリ起動画面" class="reference-image">
+            <figcaption>起動画面（新規登録 / サインイン）</figcaption>
+          </figure>
+          <figure class="usage-shot-card">
+            <img src="photoes/login.png" alt="サインイン画面" class="reference-image">
+            <figcaption>サインイン画面（<a href="#section-1" class="usage-inline-trigger" data-open-collapsible="#usage-section-1-btn">会員登録</a>済みの方はこちらから）</figcaption>
+          </figure>
+        </div>
       </div>
 
-      <button type="button" class="collapsible">1. 会員登録</button>
+      <button type="button" class="collapsible" id="usage-section-1-btn">1. 会員登録</button>
       <div class="content-collapsible">
+        <p class="usage-step-note">青学関係者情報を入力し、登録完了まで進めてください。</p>
         <ul>
           <li>アプリをインストール後、起動して案内に沿って会員登録を行います。</li>
           <li>学生番号やメールアドレスなど必要な情報を入力してください。</li>
           <li>会員登録が完了すると、青学ペイのサービスを利用できるようになります。</li>
         </ul>
         <div class="reference-image-box">
-          <img src="photoes/IMG_1516.png" alt="会員登録画面の参考画像" class="reference-image">
+          <img src="photoes/signup.png" alt="会員登録画面の参考画像" class="reference-image">
         </div>
       </div>
 
       <button type="button" class="collapsible">2. チャージ</button>
       <div class="content-collapsible">
+        <p class="usage-step-note">プリペイドコード入力か、学内窓口でのチャージを選択できます。</p>
         <ul>
           <li>学内の所定窓口にて現金もしくはプリペイドカードでチャージができます。</li>
           <li>アプリの「チャージ」画面を開き、スタッフに提示してください。</li>
           <li>プリペイドカードをお持ちの場合は「プリペイドコードでチャージ」を押し、16桁のコードをご入力ください</li>
           <li>チャージが完了すると、アプリ内の残高に反映されます。</li>
         </ul>
+        <div class="reference-image-box">
+          <img src="photoes/chagecode.png" alt="コード引き換え画面の参考画像" class="reference-image">
+        </div>
       </div>
 
       <button type="button" class="collapsible">3. 支払い</button>
       <div class="content-collapsible">
+        <p class="usage-step-note">ホームから「支払う / 送る / 受け取る」を選び、完了後は取引詳細で確認できます。</p>
         <ul>
           <li>アプリの「QRスキャン」ボタンをタップします。</li>
           <li>店舗側のQRコードを読み取ります。</li>
           <li>金額を入力し、「支払う」ボタンを押してお支払いください。</li>
           <li>支払い音が鳴ったら支払い完了です。</li>
         </ul>
+        <div class="usage-shot-grid usage-shot-grid--two">
+          <figure class="usage-shot-card">
+            <img src="photoes/home.png" alt="ホーム画面" class="reference-image">
+            <figcaption>ホーム画面（残高・操作メニュー）</figcaption>
+          </figure>
+          <figure class="usage-shot-card">
+            <img src="photoes/transcode.png" alt="ID送金画面" class="reference-image">
+            <figcaption>IDで送金画面</figcaption>
+          </figure>
+          <figure class="usage-shot-card">
+            <img src="photoes/trans-info.png" alt="取引詳細画面" class="reference-image">
+            <figcaption>取引詳細画面</figcaption>
+          </figure>
+        </div>
       </div>
 
     </section>
@@ -173,6 +204,26 @@
         } else {
           content.style.display = "block";
         }
+      });
+    });
+
+    function openCollapsible(button) {
+      if (!button || button.classList.contains('active')) return;
+      button.classList.add('active');
+      const content = button.nextElementSibling;
+      if (content) {
+        content.style.display = 'block';
+      }
+    }
+
+    document.querySelectorAll('[data-open-collapsible]').forEach(link => {
+      link.addEventListener('click', function(event) {
+        const selector = this.getAttribute('data-open-collapsible');
+        const target = selector ? document.querySelector(selector) : null;
+        if (!target) return;
+        event.preventDefault();
+        openCollapsible(target);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
