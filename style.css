@@ -379,6 +379,118 @@ body {
   text-decoration: underline;
   font-weight: 700;
 }
+.usage-feature-map-wrap {
+  position: relative;
+  width: min(100%, 360px);
+  margin: 14px auto 8px;
+}
+.usage-feature-map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  background: #fff;
+}
+.usage-feature-hotspot {
+  position: absolute;
+  width: 13%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+}
+.usage-feature-hotspot::after {
+  display: none;
+}
+.usage-feature-hotspot span {
+  display: none;
+}
+.usage-feature-hotspot:hover,
+.usage-feature-hotspot:focus-visible {
+  border: 0;
+  background: transparent;
+}
+.usage-feature-hotspot--donation {
+  top: 39.7%;
+  left: 11.6%;
+}
+.usage-feature-hotspot--order {
+  top: 40.0%;
+  left: 32.7%;
+}
+.usage-feature-hotspot--point {
+  top: 40.0%;
+  left: 54.5%;
+}
+.usage-feature-hotspot--coupon {
+  top: 39.9%;
+  left: 76.1%;
+}
+.usage-feature-hotspot--festival {
+  top: 91.4%;
+  left: 33.3%;
+}
+.usage-feature-hotspot--fleamarket {
+  top: 91.5%;
+  left: 54.1%;
+}
+.usage-feature-hotspot--board {
+  top: 91.7%;
+  left: 75.8%;
+}
+.hotspot-edit-mode .usage-feature-hotspot {
+  cursor: move;
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.16);
+}
+.hotspot-editor-panel {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  width: min(92vw, 320px);
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.15);
+  padding: 12px;
+  z-index: 1000;
+}
+.hotspot-editor-panel p {
+  margin: 8px 0 10px;
+  color: #4b5563;
+  font-size: 0.88rem;
+}
+.hotspot-editor-output {
+  margin: 10px 0 0;
+  max-height: 220px;
+  overflow: auto;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.usage-detail-card {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 14px;
+}
+.usage-detail-card ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+.usage-detail-links {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .audience-grid,
 .trust-grid {
   display: grid;

@@ -88,7 +88,7 @@
       <p class="section-lead">インストールから決済まで、順番に確認できるようにまとめています。</p>
 
       <!-- 追加部分：使い方0 -->
-      <button type="button" class="collapsible">0. アプリのインストール</button>
+      <button type="button" class="collapsible" id="usage-section-0-btn">0. アプリのインストール</button>
       <div class="content-collapsible">
         <p class="usage-step-note">インストールは「TestFlightの導入」→「招待リンクから青学ペイを導入」の順で進めます。</p>
         <ul>
@@ -127,7 +127,7 @@
         </div>
       </div>
 
-      <button type="button" class="collapsible">2. チャージ</button>
+      <button type="button" class="collapsible" id="usage-section-2-btn">2. チャージ</button>
       <div class="content-collapsible">
         <p class="usage-step-note">プリペイドコード入力か、学内窓口でのチャージを選択できます。</p>
         <ul>
@@ -141,7 +141,7 @@
         </div>
       </div>
 
-      <button type="button" class="collapsible">3. 支払い</button>
+      <button type="button" class="collapsible" id="usage-section-3-btn">3. 支払い</button>
       <div class="content-collapsible">
         <p class="usage-step-note">ホームから「支払う / 送る / 受け取る」を選び、完了後は取引詳細で確認できます。</p>
         <ul>
@@ -163,6 +163,37 @@
             <img src="photoes/trans-info.png" alt="取引詳細画面" class="reference-image">
             <figcaption>取引詳細画面</figcaption>
           </figure>
+        </div>
+      </div>
+
+      <button type="button" class="collapsible" id="usage-section-4-btn">4. そのほか機能紹介</button>
+      <div class="content-collapsible">
+        <p class="usage-step-note">これまで未紹介のボタンを、ホーム画面から直接タップして機能解説ページへ移動できます。</p>
+        <div class="usage-feature-map-wrap">
+          <img src="photoes/home.png" alt="ホーム画面の機能マップ" class="usage-feature-map-image">
+
+          <a href="usage-feature-donation.html" class="usage-feature-hotspot usage-feature-hotspot--donation" data-hotspot="donation" aria-label="寄付の解説ページへ">
+            <span>寄付</span>
+          </a>
+          <a href="usage-feature-order.html" class="usage-feature-hotspot usage-feature-hotspot--order" data-hotspot="order" aria-label="注文の解説ページへ">
+            <span>注文</span>
+          </a>
+          <a href="usage-feature-point.html" class="usage-feature-hotspot usage-feature-hotspot--point" data-hotspot="point" aria-label="ポイントの解説ページへ">
+            <span>ポイント</span>
+          </a>
+          <a href="usage-feature-coupon.html" class="usage-feature-hotspot usage-feature-hotspot--coupon" data-hotspot="coupon" aria-label="クーポンの解説ページへ">
+            <span>クーポン</span>
+          </a>
+
+          <a href="usage-feature-festival.html" class="usage-feature-hotspot usage-feature-hotspot--festival" data-hotspot="festival" aria-label="青学祭の解説ページへ">
+            <span>青学祭</span>
+          </a>
+          <a href="usage-feature-fleamarket.html" class="usage-feature-hotspot usage-feature-hotspot--fleamarket" data-hotspot="fleamarket" aria-label="フリマの解説ページへ">
+            <span>フリマ</span>
+          </a>
+          <a href="usage-feature-board.html" class="usage-feature-hotspot usage-feature-hotspot--board" data-hotspot="board" aria-label="掲示板の解説ページへ">
+            <span>掲示板</span>
+          </a>
         </div>
       </div>
 
@@ -227,18 +258,136 @@
       });
     });
 
+    function initHotspotEditor() {
+      const params = new URLSearchParams(window.location.search);
+      const isEditMode = params.get('editHotspots') === '1';
+      if (!isEditMode) return;
+
+      const section4Button = document.querySelector('#usage-section-4-btn');
+      openCollapsible(section4Button);
+
+      const map = document.querySelector('.usage-feature-map-wrap');
+      if (!map) return;
+
+      document.body.classList.add('hotspot-edit-mode');
+
+      const hotspots = Array.from(map.querySelectorAll('.usage-feature-hotspot[data-hotspot]'));
+      hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', event => event.preventDefault());
+        hotspot.style.touchAction = 'none';
+      });
+
+      const panel = document.createElement('aside');
+      panel.className = 'hotspot-editor-panel';
+      panel.innerHTML = `
+        <strong>ホットスポット編集モード</strong>
+        <p>ドラッグで位置調整。完了後にCSSをコピーしてください。</p>
+        <button type="button" class="btn btn-outline" data-copy-hotspot-css>CSSをコピー</button>
+        <pre class="hotspot-editor-output"></pre>
+      `;
+      document.body.appendChild(panel);
+
+      const output = panel.querySelector('.hotspot-editor-output');
+      const copyButton = panel.querySelector('[data-copy-hotspot-css]');
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      function normalizePositions() {
+        hotspots.forEach(hotspot => {
+          const leftPct = (hotspot.offsetLeft / map.clientWidth) * 100;
+          const topPct = (hotspot.offsetTop / map.clientHeight) * 100;
+          hotspot.dataset.left = leftPct.toFixed(1);
+          hotspot.dataset.top = topPct.toFixed(1);
+          hotspot.style.left = `${hotspot.dataset.left}%`;
+          hotspot.style.top = `${hotspot.dataset.top}%`;
+        });
+      }
+
+      function buildCss() {
+        return hotspots.map(hotspot => {
+          const key = hotspot.dataset.hotspot;
+          return `.usage-feature-hotspot--${key} {\n  top: ${hotspot.dataset.top}%;\n  left: ${hotspot.dataset.left}%;\n}`;
+        }).join('\n');
+      }
+
+      function renderOutput() {
+        output.textContent = buildCss();
+      }
+
+      function attachDrag(hotspot) {
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        hotspot.addEventListener('pointerdown', event => {
+          isDragging = true;
+          const rect = hotspot.getBoundingClientRect();
+          offsetX = event.clientX - rect.left;
+          offsetY = event.clientY - rect.top;
+          hotspot.setPointerCapture(event.pointerId);
+        });
+
+        hotspot.addEventListener('pointermove', event => {
+          if (!isDragging) return;
+          const mapRect = map.getBoundingClientRect();
+          const hotspotRect = hotspot.getBoundingClientRect();
+          const width = hotspotRect.width;
+          const height = hotspotRect.height;
+
+          const leftPx = clamp(event.clientX - mapRect.left - offsetX, 0, mapRect.width - width);
+          const topPx = clamp(event.clientY - mapRect.top - offsetY, 0, mapRect.height - height);
+
+          const leftPct = (leftPx / mapRect.width) * 100;
+          const topPct = (topPx / mapRect.height) * 100;
+
+          hotspot.dataset.left = leftPct.toFixed(1);
+          hotspot.dataset.top = topPct.toFixed(1);
+          hotspot.style.left = `${hotspot.dataset.left}%`;
+          hotspot.style.top = `${hotspot.dataset.top}%`;
+          renderOutput();
+        });
+
+        hotspot.addEventListener('pointerup', event => {
+          isDragging = false;
+          hotspot.releasePointerCapture(event.pointerId);
+        });
+      }
+
+      normalizePositions();
+      hotspots.forEach(attachDrag);
+      renderOutput();
+
+      copyButton.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(buildCss());
+          copyButton.textContent = 'コピーしました';
+          setTimeout(() => {
+            copyButton.textContent = 'CSSをコピー';
+          }, 1200);
+        } catch {
+          copyButton.textContent = 'コピー失敗';
+        }
+      });
+    }
+
     // URLハッシュに基づいて特定のセクションを開く
     window.addEventListener('DOMContentLoaded', function() {
       const hash = window.location.hash;
-      if (hash === '#section-0') {
-        const firstCollapsible = document.querySelector('.collapsible');
-        if (firstCollapsible) {
-          firstCollapsible.classList.add('active');
-          firstCollapsible.nextElementSibling.style.display = 'block';
-          // スクロールして該当セクションを表示
-          firstCollapsible.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+      const hashMap = {
+        '#section-0': '#usage-section-0-btn',
+        '#section-1': '#usage-section-1-btn',
+        '#section-2': '#usage-section-2-btn',
+        '#section-3': '#usage-section-3-btn',
+        '#section-4': '#usage-section-4-btn'
+      };
+      const targetSelector = hashMap[hash];
+      const targetButton = targetSelector ? document.querySelector(targetSelector) : null;
+      if (targetButton) {
+        openCollapsible(targetButton);
+        targetButton.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+
+      initHotspotEditor();
     });
   </script>
 </body>
