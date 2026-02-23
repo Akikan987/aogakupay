@@ -491,6 +491,23 @@ body {
   gap: 10px;
   flex-wrap: wrap;
 }
+.usage-coupon-images {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+.usage-coupon-image {
+  width: clamp(140px, 28vw, 220px);
+  border-radius: 14px;
+  border: 1px solid #d1d5db;
+  display: block;
+}
+.usage-coupon-steps {
+  list-style: none;
+  padding-left: 0;
+}
 .audience-grid,
 .trust-grid {
   display: grid;
