@@ -16,21 +16,22 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .collapsible {
-      background: #f0f4ff;
-      color: #222;
+      background: #eef5f1;
+      color: #1f2937;
       cursor: pointer;
       padding: 14px 18px;
       width: 100%;
-      border: none;
+      border: 1px solid #d1e7d8;
       text-align: left;
       outline: none;
       font-size: 1.08em;
       margin-bottom: 6px;
-      border-radius: 6px;
-      transition: background 0.2s;
+      border-radius: 10px;
+      transition: background 0.2s, border-color 0.2s;
     }
     .collapsible.active, .collapsible:hover {
-      background: #d1e0ff;
+      background: #e3f1e8;
+      border-color: var(--accent);
     }
     .collapsible:after {
       content: '▼';
@@ -45,12 +46,13 @@
       padding: 0 18px;
       display: none;
       overflow: hidden;
-      background: #f8fbff;
-      border-radius: 0 0 6px 6px;
+      background: #ffffff;
+      border-radius: 0 0 10px 10px;
       margin-bottom: 16px;
-      border-left: 2px solid #d1e0ff;
-      border-right: 2px solid #d1e0ff;
-      border-bottom: 2px solid #d1e0ff;
+      border-left: 2px solid #d1e7d8;
+      border-right: 2px solid #d1e7d8;
+      border-bottom: 2px solid #d1e7d8;
+      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
     }
     .content-collapsible ul {
       padding-left: 22px;
@@ -61,7 +63,7 @@
     }
   </style>
 </head>
-<body>
+<body class="card-emphasis-page">
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">

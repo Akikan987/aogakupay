@@ -13,7 +13,7 @@
   <title>AogakuPay</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-stripe">
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">
@@ -37,169 +37,148 @@
   </nav>
 
   <main>
-    <section id="app-section">
-      <section class="hero hero--paypayish-bg">
-        <div class="container hero-inner">
-          <div class="hero-content">
-            <h1>学生向けキャッシュレス体験を、もっと身近に</h1>
-            <p class="lead">
-              青学ペイは学内で使える簡単・安全な決済アプリのプロトタイプです。<br>
-              使い方、利用場所、開発状況をこのサイトで確認できます。
-            </p>
-            <div class="hero-ctas">
-              <a class="btn btn-solid" href="#download">今すぐはじめる</a>
-              <a class="btn btn-feedback" href="usage.html">使い方を見る</a>
-              <a class="btn btn-feedback" href="for-merchants.html">加盟店向け情報</a>
-            </div>
+    <section class="stripe-hero">
+      <div class="container stripe-hero-inner">
+        <div class="stripe-hero-content">
+          <p class="eyebrow">AOGAKUPAY PLATFORM</p>
+          <h1>学内の支払い体験を、シンプルに統一する</h1>
+          <p class="lead">青学ペイは、学生・加盟店・教職員の決済導線をひとつにまとめる学内向け決済プラットフォームです。導入から運用まで、必要な情報を最短で確認できます。</p>
+          <div class="hero-ctas">
+            <a class="btn btn-solid" href="#download">iOS版をダウンロード</a>
+            <a class="btn btn-feedback" href="usage.html">使い方を見る</a>
           </div>
-          <div class="hero-visual" aria-hidden="true">
+          <div class="hero-meta" aria-label="ステータス">
+            <span>iOS TestFlight 公開中</span>
+            <span>学内向け運用設計中</span>
+            <span>加盟店募集受付中</span>
+          </div>
+        </div>
+        <div class="stripe-hero-visual" aria-hidden="true">
+          <div class="visual-card">
             <img class="hero-phone" src="assets/qr-hero.png" alt="">
           </div>
-        </div>
-      </section>
-
-      <section class="download-banner" id="download">
-        <div class="download-banner-inner">
-          <div class="download-heading">
-            <img src="photoes/app_icon.png" alt="青学ペイロゴ" class="download-logo">
-            <div class="download-text">
-              いますぐ<br>
-              <span class="download-app">青学ペイ</span>アプリをダウンロード
-            </div>
+          <div class="visual-mini-card">
+            <p class="mini-label">最短導線</p>
+            <p class="mini-value">会員登録 → チャージ → 支払い</p>
           </div>
-          <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" class="download-main-btn">
-            iOS版をダウンロード
-          </a>
-          <div class="download-meta">※iOSのみ対応／App Storeには未公開</div>
-          <div class="download-sub">Android版は現在開発中</div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="container audience">
-        <h2 class="section-title">目的別に見る</h2>
-        <p class="section-lead">あなたの立場に合わせて、必要な情報へすぐ移動できます。</p>
-        <div class="audience-grid">
-          <a class="target-card" href="usage.html">
-            <span class="card-kicker">利用者向け</span>
-            <h3>はじめて使う方へ</h3>
-            <p>最初の設定から支払い完了まで、必要な手順を順番に確認できます。</p>
-            <ul class="card-list">
-              <li>TestFlight導入</li>
-              <li>会員登録</li>
-              <li>チャージと支払い</li>
-            </ul>
-          </a>
-          <a class="target-card" href="for-merchants.html">
-            <span class="card-kicker">加盟店向け</span>
-            <h3>加盟を検討中の方へ</h3>
-            <p>導入前に確認すべきポイントと、運用開始までの流れをまとめています。</p>
-            <ul class="card-list">
-              <li>加盟までの手順</li>
-              <li>導入メリット</li>
-              <li>加盟店向けFAQ</li>
-            </ul>
-          </a>
-          <a class="target-card" href="for-staff.html">
-            <span class="card-kicker">教職員向け</span>
-            <h3>教職員の方へ</h3>
-            <p>学内運用での想定ユースケースと、導入時の確認事項を掲載しています。</p>
-            <ul class="card-list">
-              <li>活用シーン</li>
-              <li>運用上の注意点</li>
-              <li>連携先の確認</li>
-            </ul>
-          </a>
+    <section class="stripe-section stripe-value" id="features">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">WHY AOGAKUPAY</p>
+          <h2 class="section-title">必要な機能を、学内運用に最適化</h2>
         </div>
-      </section>
-
-      <section class="features container" id="features">
-        <h2 class="section-title">主な特徴</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>簡単な操作</h3>
-            <p>QRコードの読み取りとワンタップ中心の操作で、初めてでも使いやすい設計です。</p>
+        <div class="stripe-grid three">
+          <article class="stripe-card">
+            <h3>直感的な決済フロー</h3>
+            <p>QR読み取りを中心に、初回利用でも迷いにくい画面遷移で設計しています。</p>
           </article>
-          <article class="card">
-            <h3>学内向けの設計</h3>
-            <p>学内利用を前提に、現場運用に必要な導線と情報表示を優先しています。</p>
+          <article class="stripe-card">
+            <h3>関係者ごとの導線分離</h3>
+            <p>学生・加盟店・教職員それぞれの目的に合わせて、必要情報へ最短で遷移できます。</p>
           </article>
-          <article class="card">
+          <article class="stripe-card">
             <h3>段階的な安全性強化</h3>
-            <p>認証、通信保護、運用フローの整備を段階的に進めています。</p>
+            <p>認証、履歴確認、問い合わせフローを公開し、運用面の透明性を高めています。</p>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="status container">
-        <h2 class="section-title">現在の開発状況</h2>
-        <div class="progress-list">
-          <div class="progress-item">
-            <div class="progress-label">UIデザイン</div>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 70%;"></div>
-              <div class="progress-bar-remaining" style="width: 30%;"></div>
-            </div>
-            <div class="progress-percent">進捗: <span class="percent-value" data-percent="70">70%</span></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">QR決済連携</div>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 40%;"></div>
-              <div class="progress-bar-remaining" style="width: 60%;"></div>
-            </div>
-            <div class="progress-percent">進捗: <span class="percent-value" data-percent="40">40%</span></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">ユーザーテスト</div>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 0%;"></div>
-              <div class="progress-bar-remaining" style="width: 100%;"></div>
-            </div>
-            <div class="progress-percent">進捗: <span class="percent-value" data-percent="0">0%</span></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-label">Android対応</div>
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 10%;"></div>
-              <div class="progress-bar-remaining" style="width: 90%;"></div>
-            </div>
-            <div class="progress-percent">進捗: <span class="percent-value" data-percent="10">10%</span></div>
-          </div>
-        </div>
-      </section>
+    <section class="stripe-section stripe-usecase">
+      <div class="container stripe-grid three">
+        <a class="stripe-panel" href="usage.html">
+          <p class="panel-kicker">利用者向け</p>
+          <h3>はじめて使う方へ</h3>
+          <ul>
+            <li>TestFlightの導入手順</li>
+            <li>会員登録と初期設定</li>
+            <li>チャージから支払いまで</li>
+          </ul>
+        </a>
+        <a class="stripe-panel" href="for-merchants.html">
+          <p class="panel-kicker">加盟店向け</p>
+          <h3>加盟を検討中の方へ</h3>
+          <ul>
+            <li>導入メリットと条件</li>
+            <li>申請から運用開始まで</li>
+            <li>加盟店向けFAQ</li>
+          </ul>
+        </a>
+        <a class="stripe-panel" href="for-staff.html">
+          <p class="panel-kicker">教職員向け</p>
+          <h3>教職員の方へ</h3>
+          <ul>
+            <li>学内での活用シーン</li>
+            <li>運用上の確認事項</li>
+            <li>導入時の連携ポイント</li>
+          </ul>
+        </a>
+      </div>
+    </section>
 
-      <section class="trust container">
-        <h2 class="section-title">安心して使うための取り組み</h2>
-        <p class="section-lead">「誰が」「どこで」「どう使ったか」を確認できる運用を意識して設計しています。</p>
-        <div class="trust-grid">
-          <article class="trust-card">
-            <span class="card-kicker">運用管理</span>
-            <h3>アクセス管理</h3>
-            <p>学内利用を前提にアカウント管理を行い、なりすましリスクを抑えます。</p>
+    <section class="stripe-section stripe-flow">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">ONBOARDING FLOW</p>
+          <h2 class="section-title">導入の全体像を、4ステップで把握</h2>
+        </div>
+        <div class="stripe-grid four">
+          <article class="flow-item">
+            <span class="flow-index">01</span>
+            <h3>アプリ導入</h3>
+            <p>TestFlightからiOS版をインストールし、利用準備を開始します。</p>
           </article>
-          <article class="trust-card">
-            <span class="card-kicker">誤操作防止</span>
-            <h3>取引確認</h3>
-            <p>支払い前後で金額や履歴を確認しやすい表示を採用しています。</p>
+          <article class="flow-item">
+            <span class="flow-index">02</span>
+            <h3>会員登録</h3>
+            <p>必要情報を登録し、学内利用に必要な初期設定を行います。</p>
           </article>
-          <article class="trust-card">
-            <span class="card-kicker">サポート</span>
-            <h3>問い合わせ導線</h3>
-            <p>問題発生時の連絡先と利用ルールを公開し、対応フローを明確化しています。</p>
+          <article class="flow-item">
+            <span class="flow-index">03</span>
+            <h3>残高チャージ</h3>
+            <p>支払い前に残高をチャージし、利用可能状態へ切り替えます。</p>
+          </article>
+          <article class="flow-item">
+            <span class="flow-index">04</span>
+            <h3>QRで支払い</h3>
+            <p>加盟店でQRを読み取り、支払い完了までをスムーズに行えます。</p>
           </article>
         </div>
-        <p class="trust-link">
-          詳細は <a class="utility-link" href="terms.html">利用規約・プライバシーポリシー</a> をご確認ください。
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="instagram-feed container">
-        <h2 class="section-title">公式Instagram</h2>
-        <p>リリース情報、利用可能店舗、開発状況は公式Instagramで告知しています。</p>
-        <div class="instagram-actions">
-          <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer" class="btn-instagram">Instagramを見る</a>
+    <section class="stripe-section stripe-trust">
+      <div class="container stripe-trust-inner">
+        <div>
+          <p class="eyebrow">TRUST & OPERATIONS</p>
+          <h2 class="section-title">安心して使える運用を公開</h2>
+          <p class="section-lead">利用ルール、問い合わせ導線、アクセス管理の方針を明示し、学内運用での透明性を高めます。</p>
+          <a class="btn btn-feedback" href="terms.html">利用規約・ポリシーを見る</a>
         </div>
-      </section>
+        <div class="trust-list" role="list" aria-label="運用項目">
+          <p role="listitem">アクセス管理: 学内利用を前提としたアカウント管理</p>
+          <p role="listitem">取引確認: 金額・履歴の確認を重視したUI設計</p>
+          <p role="listitem">サポート: 問い合わせ窓口と対応フローを公開</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stripe-section stripe-download" id="download">
+      <div class="container download-shell">
+        <div>
+          <p class="eyebrow">START NOW</p>
+          <h2 class="section-title">青学ペイを今すぐ試す</h2>
+          <p class="section-lead">iOS版はTestFlightで提供中です。Android版は開発を進めています。</p>
+        </div>
+        <div class="download-actions">
+          <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" class="btn btn-solid">iOS版をダウンロード</a>
+          <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer" class="btn btn-feedback">Instagramを見る</a>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -221,22 +200,13 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
-    document.querySelectorAll('.percent-value').forEach(function(span) {
-      const percent = parseInt(span.dataset.percent, 10);
-      let color = '';
-      if (percent >= 70) {
-        color = getComputedStyle(document.documentElement).getPropertyValue('--primary');
-      } else {
-        color = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-      }
-      span.style.color = color.trim();
-      span.style.fontWeight = 'bold';
-    });
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
   </script>
 </body>
 </html>
