@@ -144,12 +144,19 @@
   <script src="assets/policy-data.js"></script>
   <script src="assets/policy-renderer.js"></script>
   <script>
+    const allowedCategories = ["セキュリティ・個人情報", "利用に際して", "その他"];
+    const params = new URLSearchParams(window.location.search);
+    const initialSelectedCategories = params
+      .getAll("category")
+      .filter(category => allowedCategories.includes(category));
+
     renderAogakuPolicy({
       mode: "full",
       mountId: "policy-root",
       updatedAtId: "policy-updated-at",
       filterContainerId: "policy-filter",
-      filterCategories: ["セキュリティ・個人情報", "利用に際して", "その他"]
+      filterCategories: allowedCategories,
+      initialSelectedCategories
     });
   </script>
 </body>

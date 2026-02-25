@@ -78,7 +78,7 @@
     root.appendChild(privacyBody);
   }
 
-  function setupCategoryFilters(container, categories, onChange) {
+  function setupCategoryFilters(container, categories, onChange, initiallySelected) {
     if (!container) return;
     container.innerHTML = "";
 
@@ -94,6 +94,7 @@
       input.type = "checkbox";
       input.value = category;
       input.id = "policy-filter-" + index;
+      input.checked = initiallySelected.indexOf(category) !== -1;
 
       var text = createEl("span", "", category);
       option.appendChild(input);
@@ -192,7 +193,8 @@
 
     var filterCategories = options.filterCategories || [];
     var filterContainer = document.getElementById(options.filterContainerId || "");
-    var selectedCategories = [];
+    var initialSelectedCategories = options.initialSelectedCategories || [];
+    var selectedCategories = initialSelectedCategories.slice();
 
     if (mode === "compact") {
       renderCompactPolicy(data, root);
@@ -204,10 +206,15 @@
     }
 
     if (filterContainer && filterCategories.length > 0) {
-      setupCategoryFilters(filterContainer, filterCategories, function (categories) {
-        selectedCategories = categories;
-        renderFullPolicy(data, root, selectedCategories);
-      });
+      setupCategoryFilters(
+        filterContainer,
+        filterCategories,
+        function (categories) {
+          selectedCategories = categories;
+          renderFullPolicy(data, root, selectedCategories);
+        },
+        initialSelectedCategories
+      );
     }
 
     renderFullPolicy(data, root, selectedCategories);
