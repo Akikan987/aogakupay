@@ -1094,15 +1094,19 @@ body {
 .home-stripe .hero-phone {
   width: clamp(200px, 28vw, 340px);
   max-height: 48vh;
+  display: block;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 .home-stripe .visual-mini-card {
-  width: min(360px, 95%);
+  width: clamp(200px, 28vw, 340px);
   border-radius: 14px;
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(17, 24, 39, 0.2);
+  background: transparent;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.14);
   padding: 14px 16px;
+  justify-self: center;
   position: relative;
   z-index: 1;
 }
@@ -1295,8 +1299,8 @@ body {
     filter: contrast(1.06) saturate(0.94) drop-shadow(0 14px 20px rgba(17, 24, 39, 0.2));
   }
   .home-stripe .visual-mini-card {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(2px);
+    background: transparent;
+    backdrop-filter: none;
   }
   .home-stripe .hero-ctas .btn,
   .home-stripe .download-actions .btn {
