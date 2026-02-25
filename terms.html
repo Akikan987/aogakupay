@@ -20,6 +20,37 @@
       font-size: 0.95rem;
       margin: 0 0 18px;
     }
+    .policy-filter {
+      margin: 0 0 18px;
+      padding: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .policy-filter-label {
+      margin: 0 0 10px;
+      font-weight: 700;
+      color: #374151;
+    }
+    .policy-filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .policy-filter-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #f9fafb;
+      cursor: pointer;
+      user-select: none;
+    }
+    .policy-filter-option input {
+      margin: 0;
+    }
     #policy-root {
       max-width: 920px;
     }
@@ -83,6 +114,7 @@
       <h1>利用規約・プライバシーポリシー</h1>
       <p class="section-lead">青学ペイのご利用前に、以下の内容をご確認ください。</p>
       <p class="policy-meta">最終更新日: <span id="policy-updated-at"></span></p>
+      <div id="policy-filter" class="policy-filter"></div>
       <div id="policy-root"></div>
     </section>
   </main>
@@ -112,7 +144,13 @@
   <script src="assets/policy-data.js"></script>
   <script src="assets/policy-renderer.js"></script>
   <script>
-    renderAogakuPolicy({ mode: "full", mountId: "policy-root", updatedAtId: "policy-updated-at" });
+    renderAogakuPolicy({
+      mode: "full",
+      mountId: "policy-root",
+      updatedAtId: "policy-updated-at",
+      filterContainerId: "policy-filter",
+      filterCategories: ["セキュリティ・個人情報", "利用に際して", "その他"]
+    });
   </script>
 </body>
 </html>

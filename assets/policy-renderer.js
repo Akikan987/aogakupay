@@ -30,14 +30,39 @@
     return summaryParts.join(" ");
   }
 
-  function renderFullPolicy(data, root) {
+  function hasSelectedCategory(section, selectedCategories) {
+    if (!selectedCategories || selectedCategories.length === 0) return true;
+    var categories = section.categories || [];
+    return selectedCategories.some(function (category) {
+      return categories.indexOf(category) !== -1;
+    });
+  }
+
+  function renderSectionList(sections, body) {
+    sections.forEach(function (section) {
+      body.appendChild(createEl("h3", "", section.title));
+      appendSectionBody(section, body);
+    });
+  }
+
+  function renderFullPolicy(data, root, selectedCategories) {
+    root.innerHTML = "";
+
+    var filteredTerms = data.termsSections.filter(function (section) {
+      return hasSelectedCategory(section, selectedCategories);
+    });
+    var filteredPrivacy = data.privacySections.filter(function (section) {
+      return hasSelectedCategory(section, selectedCategories);
+    });
+
     var termsTitle = createEl("h2", "", data.termsTitle);
     root.appendChild(termsTitle);
     var termsBody = createEl("div", "policy-body");
-    data.termsSections.forEach(function (section) {
-      termsBody.appendChild(createEl("h3", "", section.title));
-      appendSectionBody(section, termsBody);
-    });
+    if (filteredTerms.length === 0) {
+      termsBody.appendChild(createEl("p", "", "該当する項目はありません。"));
+    } else {
+      renderSectionList(filteredTerms, termsBody);
+    }
     root.appendChild(termsBody);
 
     root.appendChild(createEl("hr", "policy-separator"));
@@ -45,11 +70,55 @@
     var privacyTitle = createEl("h2", "", data.privacyTitle);
     root.appendChild(privacyTitle);
     var privacyBody = createEl("div", "policy-body");
-    data.privacySections.forEach(function (section) {
-      privacyBody.appendChild(createEl("h3", "", section.title));
-      appendSectionBody(section, privacyBody);
-    });
+    if (filteredPrivacy.length === 0) {
+      privacyBody.appendChild(createEl("p", "", "該当する項目はありません。"));
+    } else {
+      renderSectionList(filteredPrivacy, privacyBody);
+    }
     root.appendChild(privacyBody);
+  }
+
+  function setupCategoryFilters(container, categories, onChange) {
+    if (!container) return;
+    container.innerHTML = "";
+
+    var label = createEl("p", "policy-filter-label", "表示カテゴリ");
+    container.appendChild(label);
+
+    var optionWrap = createEl("div", "policy-filter-options");
+    var checkboxes = [];
+
+    categories.forEach(function (category, index) {
+      var option = createEl("label", "policy-filter-option");
+      var input = createEl("input");
+      input.type = "checkbox";
+      input.value = category;
+      input.id = "policy-filter-" + index;
+
+      var text = createEl("span", "", category);
+      option.appendChild(input);
+      option.appendChild(text);
+      optionWrap.appendChild(option);
+      checkboxes.push(input);
+    });
+
+    container.appendChild(optionWrap);
+
+    function getSelected() {
+      return checkboxes
+        .filter(function (checkbox) {
+          return checkbox.checked;
+        })
+        .map(function (checkbox) {
+          return checkbox.value;
+        });
+    }
+
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        onChange(getSelected());
+      });
+    });
   }
 
   function renderAppPolicy(data, root) {
@@ -121,6 +190,10 @@
       updatedAt.textContent = data.updatedAt;
     }
 
+    var filterCategories = options.filterCategories || [];
+    var filterContainer = document.getElementById(options.filterContainerId || "");
+    var selectedCategories = [];
+
     if (mode === "compact") {
       renderCompactPolicy(data, root);
       return;
@@ -129,6 +202,14 @@
       renderAppPolicy(data, root);
       return;
     }
-    renderFullPolicy(data, root);
+
+    if (filterContainer && filterCategories.length > 0) {
+      setupCategoryFilters(filterContainer, filterCategories, function (categories) {
+        selectedCategories = categories;
+        renderFullPolicy(data, root, selectedCategories);
+      });
+    }
+
+    renderFullPolicy(data, root, selectedCategories);
   };
 })();
