@@ -1295,8 +1295,7 @@ body {
     width: min(320px, 86vw);
   }
   .home-stripe .hero-phone {
-    mix-blend-mode: multiply !important;
-    filter: contrast(1.06) saturate(0.94) drop-shadow(0 14px 20px rgba(17, 24, 39, 0.2));
+    display: none;
   }
   .home-stripe .visual-mini-card {
     background: transparent;
