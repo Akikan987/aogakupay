@@ -27,6 +27,36 @@
       border-radius: 12px;
       background: #fff;
     }
+    .policy-filter-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .policy-filter-search {
+      flex: 1 1 280px;
+      min-width: 220px;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+    .policy-filter-actions {
+      display: inline-flex;
+      gap: 8px;
+    }
+    .policy-filter-action {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .policy-filter-action:hover {
+      background: #f3f4f6;
+    }
     .policy-filter-label {
       margin: 0 0 10px;
       font-weight: 700;
@@ -86,6 +116,27 @@
       margin: 6px 0 10px;
       padding-left: 20px;
     }
+    .policy-body ol {
+      margin: 6px 0 10px;
+      padding-left: 20px;
+    }
+    .policy-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+      font-size: 0.95rem;
+    }
+    .policy-body th,
+    .policy-body td {
+      border: 1px solid #d1d5db;
+      text-align: left;
+      vertical-align: top;
+      padding: 10px;
+    }
+    .policy-body th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
     .policy-separator {
       margin: 26px 0;
       border: 0;
@@ -144,11 +195,14 @@
   <script src="assets/policy-data.js"></script>
   <script src="assets/policy-renderer.js"></script>
   <script>
-    const allowedCategories = ["セキュリティ・個人情報", "利用に際して", "その他"];
     const params = new URLSearchParams(window.location.search);
-    const initialSelectedCategories = params
-      .getAll("category")
+    const policyData = window.AOGAKU_POLICY_DATA || {};
+    const allowedCategories = Array.isArray(policyData.filterCategories)
+      ? policyData.filterCategories
+      : [];
+    const initialSelectedCategories = params.getAll("category")
       .filter(category => allowedCategories.includes(category));
+    const initialKeyword = params.get("q") || "";
 
     renderAogakuPolicy({
       mode: "full",
@@ -156,7 +210,8 @@
       updatedAtId: "policy-updated-at",
       filterContainerId: "policy-filter",
       filterCategories: allowedCategories,
-      initialSelectedCategories
+      initialSelectedCategories,
+      initialKeyword
     });
   </script>
 </body>

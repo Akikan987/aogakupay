@@ -6,7 +6,15 @@
     return el;
   }
 
-  function appendSectionBody(section, body) {
+  function htmlToText(html) {
+    var temp = document.createElement("div");
+    temp.innerHTML = html;
+    return (temp.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function appendLegacyBody(section, body) {
     (section.paragraphs || []).forEach(function (paragraph) {
       body.appendChild(createEl("p", "", paragraph));
     });
@@ -19,7 +27,22 @@
     }
   }
 
+  function appendSectionBody(section, body) {
+    if (typeof section.html === "string" && section.html.trim()) {
+      var wrapper = createEl("div", "policy-section-content");
+      wrapper.innerHTML = section.html;
+      body.appendChild(wrapper);
+      return;
+    }
+    appendLegacyBody(section, body);
+  }
+
   function summarizeSection(section) {
+    if (typeof section.html === "string" && section.html.trim()) {
+      var compact = htmlToText(section.html);
+      return compact.length > 140 ? compact.slice(0, 140) + "..." : compact;
+    }
+
     var summaryParts = [];
     if (section.paragraphs && section.paragraphs.length > 0) {
       summaryParts.push(section.paragraphs[0]);
@@ -33,8 +56,39 @@
   function hasSelectedCategory(section, selectedCategories) {
     if (!selectedCategories || selectedCategories.length === 0) return true;
     var categories = section.categories || [];
+    if (categories.length === 0) return true;
     return selectedCategories.some(function (category) {
       return categories.indexOf(category) !== -1;
+    });
+  }
+
+  function sectionSearchText(section) {
+    var chunks = [section.title || ""];
+
+    if (typeof section.html === "string" && section.html.trim()) {
+      chunks.push(htmlToText(section.html));
+    }
+    if (section.paragraphs) {
+      chunks = chunks.concat(section.paragraphs);
+    }
+    if (section.list) {
+      chunks = chunks.concat(section.list);
+    }
+
+    return chunks.join(" ").toLowerCase();
+  }
+
+  function hasKeyword(section, keyword) {
+    if (!keyword) return true;
+    return sectionSearchText(section).indexOf(keyword.toLowerCase()) !== -1;
+  }
+
+  function filterSections(sections, filterState) {
+    var categories = filterState.categories || [];
+    var keyword = (filterState.keyword || "").trim();
+
+    return sections.filter(function (section) {
+      return hasSelectedCategory(section, categories) && hasKeyword(section, keyword);
     });
   }
 
@@ -45,15 +99,11 @@
     });
   }
 
-  function renderFullPolicy(data, root, selectedCategories) {
+  function renderFullPolicy(data, root, filterState) {
     root.innerHTML = "";
 
-    var filteredTerms = data.termsSections.filter(function (section) {
-      return hasSelectedCategory(section, selectedCategories);
-    });
-    var filteredPrivacy = data.privacySections.filter(function (section) {
-      return hasSelectedCategory(section, selectedCategories);
-    });
+    var filteredTerms = filterSections(data.termsSections, filterState);
+    var filteredPrivacy = filterSections(data.privacySections, filterState);
 
     var termsTitle = createEl("h2", "", data.termsTitle);
     root.appendChild(termsTitle);
@@ -78,12 +128,32 @@
     root.appendChild(privacyBody);
   }
 
-  function setupCategoryFilters(container, categories, onChange, initiallySelected) {
+  function setupCategoryFilters(container, categories, onChange, initialState) {
     if (!container) return;
     container.innerHTML = "";
 
-    var label = createEl("p", "policy-filter-label", "表示カテゴリ");
+    var state = initialState || { categories: [], keyword: "" };
+
+    var label = createEl("p", "policy-filter-label", "絞り込み");
     container.appendChild(label);
+
+    var toolbar = createEl("div", "policy-filter-toolbar");
+    var search = createEl("input", "policy-filter-search");
+    search.type = "search";
+    search.placeholder = "見出し・本文で検索";
+    search.value = state.keyword || "";
+    toolbar.appendChild(search);
+
+    var actions = createEl("div", "policy-filter-actions");
+    var selectAll = createEl("button", "policy-filter-action", "全選択");
+    selectAll.type = "button";
+    var clearAll = createEl("button", "policy-filter-action", "全解除");
+    clearAll.type = "button";
+    actions.appendChild(selectAll);
+    actions.appendChild(clearAll);
+    toolbar.appendChild(actions);
+
+    container.appendChild(toolbar);
 
     var optionWrap = createEl("div", "policy-filter-options");
     var checkboxes = [];
@@ -94,7 +164,7 @@
       input.type = "checkbox";
       input.value = category;
       input.id = "policy-filter-" + index;
-      input.checked = initiallySelected.indexOf(category) !== -1;
+      input.checked = (state.categories || []).indexOf(category) !== -1;
 
       var text = createEl("span", "", category);
       option.appendChild(input);
@@ -115,10 +185,31 @@
         });
     }
 
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener("change", function () {
-        onChange(getSelected());
+    function emit() {
+      onChange({
+        categories: getSelected(),
+        keyword: search.value.trim()
       });
+    }
+
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", emit);
+    });
+    search.addEventListener("input", emit);
+
+    selectAll.addEventListener("click", function () {
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = true;
+      });
+      emit();
+    });
+
+    clearAll.addEventListener("click", function () {
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
+      });
+      search.value = "";
+      emit();
     });
   }
 
@@ -191,11 +282,6 @@
       updatedAt.textContent = data.updatedAt;
     }
 
-    var filterCategories = options.filterCategories || [];
-    var filterContainer = document.getElementById(options.filterContainerId || "");
-    var initialSelectedCategories = options.initialSelectedCategories || [];
-    var selectedCategories = initialSelectedCategories.slice();
-
     if (mode === "compact") {
       renderCompactPolicy(data, root);
       return;
@@ -205,18 +291,25 @@
       return;
     }
 
+    var filterCategories = options.filterCategories || data.filterCategories || [];
+    var filterContainer = document.getElementById(options.filterContainerId || "");
+    var filterState = {
+      categories: (options.initialSelectedCategories || []).slice(),
+      keyword: options.initialKeyword || ""
+    };
+
     if (filterContainer && filterCategories.length > 0) {
       setupCategoryFilters(
         filterContainer,
         filterCategories,
-        function (categories) {
-          selectedCategories = categories;
-          renderFullPolicy(data, root, selectedCategories);
+        function (state) {
+          filterState = state;
+          renderFullPolicy(data, root, filterState);
         },
-        initialSelectedCategories
+        filterState
       );
     }
 
-    renderFullPolicy(data, root, selectedCategories);
+    renderFullPolicy(data, root, filterState);
   };
 })();
