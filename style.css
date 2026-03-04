@@ -1008,8 +1008,10 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("assets/hero-bg.svg") right top / cover no-repeat;
-  opacity: 0.95;
+  background:
+    linear-gradient(rgba(247, 251, 248, 0.58), rgba(247, 251, 248, 0.58)),
+    url("photoes/hero-BG.jpeg") center center / cover no-repeat;
+  opacity: 1;
   pointer-events: none;
 }
 .home-stripe .stripe-hero-inner {
