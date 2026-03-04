@@ -13,12 +13,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>利用規約・プライバシーポリシー | AogakuPay</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=457946c65094">
   <style>
     .policy-meta {
       color: #6b7280;
       font-size: 0.95rem;
       margin: 0 0 18px;
+    }
+    .policy-filter {
+      margin: 0 0 18px;
+      padding: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .policy-filter-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .policy-filter-search {
+      flex: 1 1 280px;
+      min-width: 220px;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+    .policy-filter-actions {
+      display: inline-flex;
+      gap: 8px;
+    }
+    .policy-filter-action {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .policy-filter-action:hover {
+      background: #f3f4f6;
+    }
+    .policy-filter-label {
+      margin: 0 0 10px;
+      font-weight: 700;
+      color: #374151;
+    }
+    .policy-filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .policy-filter-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #f9fafb;
+      cursor: pointer;
+      user-select: none;
+    }
+    .policy-filter-option input {
+      margin: 0;
     }
     #policy-root {
       max-width: 920px;
@@ -55,6 +116,27 @@
       margin: 6px 0 10px;
       padding-left: 20px;
     }
+    .policy-body ol {
+      margin: 6px 0 10px;
+      padding-left: 20px;
+    }
+    .policy-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+      font-size: 0.95rem;
+    }
+    .policy-body th,
+    .policy-body td {
+      border: 1px solid #d1d5db;
+      text-align: left;
+      vertical-align: top;
+      padding: 10px;
+    }
+    .policy-body th {
+      background: #f9fafb;
+      font-weight: 700;
+    }
     .policy-separator {
       margin: 26px 0;
       border: 0;
@@ -83,6 +165,7 @@
       <h1>利用規約・プライバシーポリシー</h1>
       <p class="section-lead">青学ペイのご利用前に、以下の内容をご確認ください。</p>
       <p class="policy-meta">最終更新日: <span id="policy-updated-at"></span></p>
+      <div id="policy-filter" class="policy-filter"></div>
       <div id="policy-root"></div>
     </section>
   </main>
@@ -112,7 +195,24 @@
   <script src="assets/policy-data.js"></script>
   <script src="assets/policy-renderer.js"></script>
   <script>
-    renderAogakuPolicy({ mode: "full", mountId: "policy-root", updatedAtId: "policy-updated-at" });
+    const params = new URLSearchParams(window.location.search);
+    const policyData = window.AOGAKU_POLICY_DATA || {};
+    const allowedCategories = Array.isArray(policyData.filterCategories)
+      ? policyData.filterCategories
+      : [];
+    const initialSelectedCategories = params.getAll("category")
+      .filter(category => allowedCategories.includes(category));
+    const initialKeyword = params.get("q") || "";
+
+    renderAogakuPolicy({
+      mode: "full",
+      mountId: "policy-root",
+      updatedAtId: "policy-updated-at",
+      filterContainerId: "policy-filter",
+      filterCategories: allowedCategories,
+      initialSelectedCategories,
+      initialKeyword
+    });
   </script>
 </body>
 </html>

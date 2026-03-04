@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+echo "[pre-push] Updating CSS cache-buster links..."
+
+before_html_diff="$(git diff --name-only -- '*.html' | sort)"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\\scripts\\update-css-cache-buster.ps1"
+after_html_diff="$(git diff --name-only -- '*.html' | sort)"
+
+if [ "$before_html_diff" != "$after_html_diff" ]; then
+  echo ""
+  echo "[pre-push] HTML files were updated by cache-buster." 
+  echo "[pre-push] Please commit the updated files, then push again."
+  echo "[pre-push] Suggested commands:"
+  echo "  git add *.html"
+  echo "  git commit -m \"chore: update css cache-buster\""
+  exit 1
+fi
+
+echo "[pre-push] Cache-buster check passed."
