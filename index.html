@@ -45,7 +45,7 @@
           <p class="lead">青学ペイは、学生・加盟店・教職員の決済導線をひとつにまとめる学内向け決済プラットフォームです。導入から運用まで、必要な情報を最短で確認できます。</p>
           <div class="hero-ctas">
             <a class="btn btn-solid" href="#download">iOS版をダウンロード</a>
-            <a class="btn btn-solid" href="#download">Android版をダウンロード</a>
+            <a class="btn btn-solid android-download-btn" href="#download" data-tooltip="Android版はクローズドテスト段階です。テストを開始する前にinstragramのDMにてgoogleアカウントのメールアドレスを送信ください。リアクション後ご利用いただけます。">Android版をダウンロード</a>
             <a class="btn btn-feedback" href="usage.html">使い方を見る</a>
           </div>
           <div class="hero-meta" aria-label="ステータス">
@@ -173,7 +173,7 @@
         </div>
         <div class="download-actions">
           <a href="https://testflight.apple.com/join/weuxb116" target="_blank" rel="noopener noreferrer" class="btn btn-solid">iOS版をダウンロード</a>
-          <a href="https://play.google.com/store/apps/details?id=com.aoyamapay.android" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Android版をダウンロード</a>
+          <a href="https://play.google.com/store/apps/details?id=com.aoyamapay.android" target="_blank" rel="noopener noreferrer" class="btn btn-solid android-download-btn" data-tooltip="Android版はクローズドテスト段階です。テストを開始する前にinstragramのDMにてgoogleアカウントのメールアドレスを送信ください。リアクション後ご利用いただけます。">Android版をダウンロード</a>
           <a href="https://www.instagram.com/aogaku.pay/" target="_blank" rel="noopener noreferrer" class="btn btn-feedback">Instagramを見る</a>
         </div>
       </div>
@@ -196,6 +196,21 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const androidNotice = 'Android版はクローズドテスト段階です。テストを開始する前にinstragramのDMにてgoogleアカウントのメールアドレスを送信ください。リアクション後ご利用いただけます。';
+    const androidButtons = document.querySelectorAll('.android-download-btn');
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    androidButtons.forEach((button) => {
+      if (!button.dataset.tooltip) {
+        button.dataset.tooltip = androidNotice;
+      }
+      if (isTouchDevice) {
+        button.addEventListener('click', () => {
+          window.alert(androidNotice);
+        });
+      }
+    });
+
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.global-nav');
     if (toggle && nav) {
