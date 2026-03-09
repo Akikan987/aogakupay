@@ -14,6 +14,10 @@
 
   --btn-normal-green: #316745;
   --btn-hover-black: #1b1b1f;
+
+  /* 利用規約ボタン表示切替: 戻す場合は inline / inline-block に変更 */
+  --terms-footer-link-display: none;
+  --terms-cta-display: none;
 }
 
 * {
@@ -216,6 +220,10 @@ body {
   background: rgba(49, 103, 69, 0.08);
   color: var(--primary);
   border-color: var(--primary);
+}
+.btn-feedback[href^="terms.html"],
+.btn[href^="terms.html"] {
+  display: var(--terms-cta-display);
 }
 .android-download-btn {
   position: relative;
@@ -788,6 +796,9 @@ body {
   hyphens: auto;
 }
 .footer-link { font-size:1em; color:#3f729b; text-decoration:none; }
+.footer-link[href^="terms.html"] {
+  display: var(--terms-footer-link-display);
+}
 
 /* 小さい画面（スマホ）向け: 縦並び */
 @media (max-width: 640px) {
@@ -1189,6 +1200,11 @@ body {
 .home-stripe .stripe-grid.three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.home-stripe .stripe-usecase .stripe-grid.three {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 900px;
+  margin: 0 auto;
+}
 .home-stripe .stripe-grid.four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1304,6 +1320,9 @@ body {
   .home-stripe .stripe-grid.three {
     grid-template-columns: 1fr;
   }
+  .home-stripe .stripe-usecase .stripe-grid.three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .home-stripe .stripe-grid.four {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1318,7 +1337,16 @@ body {
     border-color: rgba(255, 255, 255, 0.4);
   }
   .home-stripe .global-nav {
+    background: #fff;
     border: 1px solid rgba(17, 24, 39, 0.08);
+  }
+  .home-stripe .global-nav .nav-item {
+    color: var(--text);
+  }
+  .home-stripe .global-nav .nav-item:hover,
+  .home-stripe .global-nav .nav-item.active {
+    color: var(--primary);
+    background: #eef5f1;
   }
 }
 
@@ -1330,6 +1358,9 @@ body {
     padding: 40px 0;
   }
   .home-stripe .stripe-grid.four {
+    grid-template-columns: 1fr;
+  }
+  .home-stripe .stripe-usecase .stripe-grid.three {
     grid-template-columns: 1fr;
   }
   .home-stripe h1 {
