@@ -845,6 +845,16 @@ body {
   display: block;
 }
 
+@media (min-width: 1200px) {
+  .members-intro {
+    flex-wrap: nowrap;
+    gap: 2em;
+  }
+  .member-card {
+    width: 180px;
+  }
+}
+
 /* アプリ紹介用ヘッダー（詳細ページ用）*/
 .app-header {
   text-align: center;
