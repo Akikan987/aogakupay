@@ -184,7 +184,7 @@ window.AOGAKU_POLICY_DATA = {
       html: `<table>
         <tr><th>事業者名</th><td>Azul</td></tr>
         <tr><th>代表者</th><td>Eungi Kim</td></tr>
-        <tr><th>連絡先</th><td><a href="https://aogakupay.com">https://aogakupay.com</a></td></tr>
+        <tr><th>連絡先</th><td><a href="https://aogakupay.com">Univ. pay公式サイト</a></td></tr>
       </table>`
     },
     {
